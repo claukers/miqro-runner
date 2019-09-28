@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { ISimpleMap } from "../../../miqro-core";
+import { ISimpleMap } from "miqro-core";
 
 const logger = console;
 
