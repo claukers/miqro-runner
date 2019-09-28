@@ -35,10 +35,10 @@ describe('Zexample start', function () {
     test().then(done).catch(done);
   });
 
-  /*it('start the example in unsupported mode', (done) => {
+  it('start the example in unsupported mode', (done) => {
     const test = async () => {
       try {
-        const lib = require('../src');
+        const lib = require('../src/miqro');
         const micro = new lib.Miqro({
           name: "Micro 1",
           service: path.resolve(__dirname, '..', 'example', 'service'),
@@ -51,5 +51,5 @@ describe('Zexample start', function () {
       }
     };
     test().then(done).catch(done);
-  });*/
+  });
 });
