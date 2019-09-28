@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/claukers/miqro.git"
+    "url": "https://github.com/claukers/miqro-cli.git"
   },
   "scripts": {
     "miqro": "node dist/cli/cli.js",
