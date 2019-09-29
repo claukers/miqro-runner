@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { Util } from "miqro-core";
 import * as path from "path";
-// import { templates } from "../util/templates";
+import { templates } from "../template";
 
 const logger = console;
 const modulePath = process.argv[3];
@@ -15,7 +15,7 @@ if (typeof modulePath !== "string") {
 
 const service = path.resolve(modulePath);
 
-/*if (!fs.existsSync(service)) {
+if (!fs.existsSync(service)) {
   logger.warn(`microservice [${service}] doesnt exists!`);
   logger.warn(`creating [${service}]!`);
   const mainjsPath = path.resolve(path.dirname(service), "main.js");
@@ -23,7 +23,7 @@ const service = path.resolve(modulePath);
   if (!fs.existsSync(mainjsPath)) {
     fs.writeFileSync(mainjsPath, templates.mainjs(path.basename(service)));
   }
-}*/
+}
 
 Util.setupInstanceEnv("automigrate", service);
 Util.loadConfig(true);
