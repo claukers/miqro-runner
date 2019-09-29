@@ -2,6 +2,8 @@
 
 **in early development not to use in production**
 
+this is a part of the ```miqro``` module and provides a simple cli for miqro.
+
 ## runner cli
 
 ```miqro-runner <command> [args..]```
