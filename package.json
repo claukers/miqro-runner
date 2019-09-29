@@ -1,17 +1,17 @@
 {
-  "name": "miqro-cli",
+  "name": "miqro-runner",
   "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
   "bin": {
-    "miqro": "dist/cli/cli.js"
+    "miqro-runner": "dist/cli/cli.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/claukers/miqro-cli.git"
   },
   "scripts": {
-    "miqro": "node dist/cli/cli.js",
+    "miqro-runner": "node dist/cli/cli.js",
     "prepare": "npm run build",
     "build": "rimraf dist/ && tsc",
     "test": "NODE_ENV=test nyc mocha test/*.test.ts",
