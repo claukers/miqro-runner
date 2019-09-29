@@ -19,10 +19,14 @@ service(app).then((server) => {
 
 export const indexjs = () => {
   return `const {
-  Database,
-  Util,
   APIResponse
-} = require("miqro");
+} = require("miqro-express");
+const {
+  Database
+} = require("miqro-sequelize");
+const {
+  Util
+} = require("miqro-core");
 const path = require("path");
 
 module.exports = async (app) => {
