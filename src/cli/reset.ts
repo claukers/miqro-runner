@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import * as path from "path";
 import { Util } from "miqro-core";
+import * as path from "path";
 
 const modulePath = process.argv[3];
 const logger = console;

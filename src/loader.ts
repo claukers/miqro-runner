@@ -4,9 +4,9 @@ import * as express from "express";
 import * as fs from "fs";
 import * as http from "http";
 import * as https from "https";
+import { Util } from "miqro-core";
+import { setupMiddleware } from "miqro-express";
 import * as  path from "path";
-import { setupMiddleware, Util } from "miqro-core";
-
 
 export const setupInstance = (serviceName, scriptPath): any => {
   Util.setupInstanceEnv(serviceName, scriptPath);

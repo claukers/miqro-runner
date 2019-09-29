@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import * as path from "path";
 import { Util } from "miqro-core";
+import * as path from "path";
 // import { templates } from "../util/templates";
 
 const logger = console;
