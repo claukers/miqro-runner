@@ -1,7 +1,8 @@
 export const mainjs = (servicejs) => {
   return `const express = require("express");
-const { Util, setupMiddleware } = require("miqro");
-// process.env.MIQRO_DIRNAME must exists!
+const { Util } = require("miqro-core");
+const { setupMiddleware } = require("miqro-express");
+process.env.MIQRO_DIRNAME = process.env.MIQRO_DIRNAME ? process.env.MIQRO_DIRNAME : __dirname;
 Util.loadConfig();
 
 const logger = Util.getLogger("main.js");
