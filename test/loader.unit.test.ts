@@ -72,6 +72,7 @@ describe('lib.util.loader unit tests', function () {
     checkEnvVariables: sinon.fake(),
   }
   const fakeApp = {
+    disable: sinon.fake()
   }
   const fakeScriptModule = sinon.fake(async (app) => {
     return fakeApp;
@@ -86,7 +87,9 @@ describe('lib.util.loader unit tests', function () {
     // rewiremock.default("../db").with(fakeDatabase);
     rewiremock.default("http").with(fakeHttp);
     rewiremock.default("https").with(fakeHttps);
-    rewiremock.default(miqroCorePath).with({ Util: FakeUtil, setupMiddleware: fakeMiddleware.setupMiddleware });
+    rewiremock.default(miqroCorePath).with({ Util: FakeUtil });
+    rewiremock.default("miqro-express").with({ setupMiddleware: fakeMiddleware.setupMiddleware });
+
     rewiremock.default("nodeScript").with(fakeScriptModule);
     rewiremock.default(pathrc).with({ "models-path": "models" });
     rewiremock.default("models").with(fakeModels);

@@ -13,7 +13,9 @@ describe('Zexample start', function () {
     rewiremock.default.disable();
     rewiremock.default.enable();
     const miqroCore = require(miqroCorePath);
+    const miqroExpress = require("miqro-express");
     rewiremock.default("miqro-core").with(miqroCore);
+    rewiremock.default("miqro-express").with(miqroExpress);
     done();
   });
   after((done) => {
