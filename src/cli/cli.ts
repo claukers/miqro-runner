@@ -7,8 +7,6 @@ const logger = console;
 const cmds: ISimpleMap<{ module: string; description: string }> = {
   start: { module: "./start", description: "starts a microservice" },
   watch: { module: "./watch", description: "starts a microservice in watch mode on the service dir" },
-  init: { module: "./init", description: "inits your config folder (MIQRO_DIRNAME)" },
-  reset: { module: "./reset", description: "delete custom made config files." },
   version: { module: "./version", description: "prints miqro version." }
 };
 
