@@ -3,7 +3,7 @@ const {
   ParseOptionsError,
 } = require("miqro-core");
 const {
-  createServiceAPIHandler
+  createServiceHandler
 } = require("miqro-express");
 
 const logger = Util.getLogger("posts.js");
@@ -15,6 +15,6 @@ class MyCustomService {
 }
 
 module.exports = async (app) => {
-  app.use("/myFunction", createServiceAPIHandler(new MyCustomService(), "myFunction"));
+  app.use("/myFunction", createServiceHandler(new MyCustomService(), "myFunction"));
   return app;
 };
