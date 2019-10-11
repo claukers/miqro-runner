@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as watch from "watch";
 
-const usage = `usage: miqro watch [nodes=1] [mode=simple] <microservice.js>`;
+const usage = `usage: miqro-runner watch [nodes=1] [mode=simple] <microservice.js>`;
 
 const logger = console;
 
@@ -67,7 +67,7 @@ const restart = (silent?) => {
     }
     const start = () => {
       logger.log("running");
-      proc = cp.spawn("npx", ["miqro", "start", nodes, mode, service], {
+      proc = cp.spawn("npx", ["miqro-runner", "start", nodes, mode, service], {
         cwd: serviceDirname,
         env: process.env,
         windowsHide: true
