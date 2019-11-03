@@ -48,13 +48,11 @@ describe('lib.instance unit tests', function () {
       const serviceArg = setupInstanceFake.args[oldCount][1];
       const loggerArg = runInstanceFake.args[oldCount2][0];
       const scriptArg = runInstanceFake.args[oldCount2][1];
-      const serviceArg2 = runInstanceFake.args[oldCount2][2];
       chai.expect(runInstanceFake.callCount).to.be.equals(oldCount2 + 1);
       chai.expect(nameArg).to.be.equals(nodeName);
       chai.expect(serviceArg).to.be.equals(path.resolve(nodeService));
       chai.expect(loggerArg).to.be.equals(setupFakeInstance.logger);
       chai.expect(scriptArg).to.be.equals(setupFakeInstance.script);
-      chai.expect(serviceArg2).to.be.equals(path.resolve(nodeService));
     };
     test().then(done).catch(done);
   });

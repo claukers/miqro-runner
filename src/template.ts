@@ -1,3 +1,4 @@
+// noinspection SpellCheckingInspection,SpellCheckingInspection
 export const mainjs = (servicejs) => {
   return `const express = require("express");
 const { Util } = require("miqro-core");
@@ -18,6 +19,7 @@ service(app).then((server) => {
 `;
 };
 
+// noinspection SpellCheckingInspection
 export const indexjs = () => {
   return `const {
   APIResponse
@@ -45,7 +47,7 @@ module.exports = async (app) => {
 };
 `;
 };
-
+// noinspection SpellCheckingInspection
 export const templates = {
   indexjs,
   mainjs

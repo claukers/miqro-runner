@@ -23,7 +23,7 @@ export const setupInstance = (serviceName, scriptPath): any => {
   };
 };
 
-export const runInstance = async (logger, script, scriptPath) => {
+export const runInstance = async (logger, script) => {
   Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
   return new Promise(async (resolve, reject) => {
     try {

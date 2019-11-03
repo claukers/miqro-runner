@@ -1,7 +1,7 @@
-import { EventEmitter } from "events";
-import * as path from "path";
-import * as scriptpool from "script-pool";
-import { runInstance, setupInstance } from "./loader";
+import {EventEmitter} from "events";
+import {resolve} from "path";
+import {createClusterPool, createForkPool} from "script-pool";
+import {runInstance, setupInstance} from "./loader";
 
 const logger = console;
 
@@ -16,16 +16,19 @@ export interface IMicroConfig {
   service: string;
 }
 
+// noinspection SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection
 export class Miqro extends EventEmitter {
   private pool;
   private instanceApp;
   private simpleInstance = null;
   private restart = null;
   private state: IMiqroState = "stopped";
+
   constructor(private config: IMicroConfig) {
     super();
     this.configure(config);
   }
+
   public async start() {
     if (this.state !== "stopped") {
       throw new Error(`cannot start if not stopped!`);
@@ -37,10 +40,11 @@ export class Miqro extends EventEmitter {
       await this.setupAutostart();
     } else if (this.config.mode === "simple") {
       this.simpleInstance = setupInstance(this.config.name, this.config.service);
-      this.instanceApp = await runInstance(this.simpleInstance.logger, this.simpleInstance.script, this.config.service);
+      this.instanceApp = await runInstance(this.simpleInstance.logger, this.simpleInstance.script);
       this.state = "started";
     }
   }
+
   public async stop() {
     if (this.state !== "started") {
       throw new Error(`cannot stop if not started!`);
@@ -56,6 +60,7 @@ export class Miqro extends EventEmitter {
       this.state = "stopped";
     }
   }
+
   private configure(config) {
     if (this.state !== "stopped") {
       throw new Error(`cannot configured if not stopped!`);
@@ -63,12 +68,13 @@ export class Miqro extends EventEmitter {
     this.config = config;
     switch (config.mode) {
       case "cluster":
-        this.pool = scriptpool.createClusterPool({
+        // noinspection SpellCheckingInspection
+        this.pool = createClusterPool({
           min: config.nodes,
           max: config.nodes,
           autostart: false,
           testOnBorrow: true
-        }, path.resolve(__dirname, "instance"), [config.name, config.service]);
+        }, resolve(__dirname, "instance"), [config.name, config.service]);
         this.pool.on("factoryCreateError", (err) => {
           this.emit("factoryCreateError", err);
         });
@@ -80,12 +86,13 @@ export class Miqro extends EventEmitter {
         if (config.nodes !== 1) {
           throw new Error(`${config.nodes} not supported in fork mode (try 1 or cluster mode)!`);
         }
-        this.pool = scriptpool.createForkPool({
+        // noinspection SpellCheckingInspection
+        this.pool = createForkPool({
           min: config.nodes,
           max: config.nodes,
           autostart: false,
           testOnBorrow: true
-        }, path.resolve(__dirname, "instance"), [config.name, config.service]);
+        }, resolve(__dirname, "instance"), [config.name, config.service]);
         this.pool.on("factoryCreateError", (err) => {
           this.emit("factoryCreateError", err);
         });
@@ -102,8 +109,11 @@ export class Miqro extends EventEmitter {
         throw new Error(`mode ${config.mode} not supported!`);
     }
   }
+
+  // noinspection SpellCheckingInspection
   private async setupAutostart() {
     if (this.state !== "started") {
+      // noinspection SpellCheckingInspection
       throw new Error(`cannot setupAutostart if not started!`);
     }
     const instances = [];
@@ -117,6 +127,7 @@ export class Miqro extends EventEmitter {
         this.restart = setTimeout(async () => {
           logger.info(`restarting dead workers`);
           if (this.state === "started") {
+            // noinspection SpellCheckingInspection
             await this.setupAutostart();
           } else {
             logger.info(`restarting canceled because miqro not started`);
