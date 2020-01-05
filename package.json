@@ -22,8 +22,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "miqro-core": "^0.1.9",
-    "miqro-express": "^0.1.16",
+    "miqro-core": "git+https://github.com/claukers/miqro-core.git#develop",
+    "miqro-express": "git+https://github.com/claukers/miqro-express.git#develop",
     "script-pool": "^1.0.1",
     "watch": "^1.0.2"
   },
