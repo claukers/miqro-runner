@@ -49,37 +49,40 @@ const restart = (silent?) => {
     } else {
       start();
     }
-  }, silent ? 0 : 2000);
+  }, silent ? 0 : 1000);
 };
 logger.log(`watching ${serviceDirname}`);
-restart(true);
+setTimeout(() => {
+  restart(true);
+}, 0);
 watch.watchTree(serviceDirname, (f, curr, prev) => {
   let ext = "";
   let basedir = "";
   let dirName = "";
   try {
-    ext = path.extname(f);
-    basedir = path.dirname(f);
-    dirName = path.basename(basedir);
-    if (dirName !== "logs" && ext !== ".log") {
-      if (typeof f === "object" && prev === null && curr === null) {
-        // Finished walking the tree
-      } else if (prev === null) {
-        // f is a new file
-        logger.log(`${f} new file`);
-        restart();
-      } else if (curr.nlink === 0) {
-        // f was removed
-        logger.log(`${f} removed`);
-        restart();
-      } else {
-        // f was changed
-        logger.log(`change in ${f}`);
-        restart();
+    if (typeof f === "string") {
+      ext = path.extname(f);
+      basedir = path.dirname(f);
+      dirName = path.basename(basedir);
+      if (dirName !== "logs" && ext !== ".log") {
+        if (typeof f === "object" && prev === null && curr === null) {
+          // Finished walking the tree
+        } else if (prev === null) {
+          // f is a new file
+          logger.log(`${f} new file`);
+          restart();
+        } else if (curr.nlink === 0) {
+          // f was removed
+          logger.log(`${f} removed`);
+          restart();
+        } else {
+          // f was changed
+          logger.log(`change in ${f}`);
+          restart();
+        }
       }
     }
   } catch (e) {
     logger.error(e);
   }
-
 });
