@@ -1,6 +1,6 @@
 {
   "name": "miqro-runner",
-  "version": "0.2.1",
+  "version": "0.4.0",
   "description": "",
   "main": "dist/index.js",
   "bin": {
@@ -14,7 +14,7 @@
     "prepare": "npm run build",
     "build": "rimraf dist/ && tsc",
     "test": "NODE_ENV=test nyc mocha test/*.test.ts",
-    "testfile": "NODE_ENV=test nyc mocha",
+    "testfile": "NODE_ENVrm =test nyc mocha",
     "lint": "tslint -c ./tslint.json -p ./tsconfig.json",
     "fixlint": "tslint --fix -c ./tslint.json -p ./tsconfig.json"
   },
@@ -23,7 +23,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "miqro-core": "^0.2.1",
-    "miqro-express": "git+https://github.com/claukers/miqro-express.git#develop",
+    "miqro-express": "^0.4.1",
     "script-pool": "^1.0.1",
     "watch": "^1.0.2"
   },
