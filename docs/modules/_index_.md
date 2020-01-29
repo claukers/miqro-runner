@@ -1,36 +1,34 @@
 [miqro-runner](../README.md) › [Globals](../globals.md) › ["index"](_index_.md)
 
-# External module: "index"
+# Module: "index"
 
 ## Index
 
-### References
+### Classes
 
-* [IMicroConfig](_index_.md#imicroconfig)
+* [Miqro](../classes/_index_.miqro.md)
+
+### Interfaces
+
+* [IMicroConfig](../interfaces/_index_.imicroconfig.md)
+
+### Type aliases
+
 * [IMiqroState](_index_.md#imiqrostate)
 * [IMode](_index_.md#imode)
-* [Miqro](_index_.md#miqro)
 
-## References
-
-###  IMicroConfig
-
-• **IMicroConfig**:
-
-___
+## Type aliases
 
 ###  IMiqroState
 
-• **IMiqroState**:
+Ƭ **IMiqroState**: *"stopping" | "stopped" | "starting" | "started"*
+
+*Defined in [src/miqro.ts:10](https://github.com/claukers/miqro-runner/blob/652df1c/src/miqro.ts#L10)*
 
 ___
 
 ###  IMode
 
-• **IMode**:
+Ƭ **IMode**: *"cluster" | "fork" | "simple"*
 
-___
-
-###  Miqro
-
-• **Miqro**:
+*Defined in [src/miqro.ts:8](https://github.com/claukers/miqro-runner/blob/652df1c/src/miqro.ts#L8)*

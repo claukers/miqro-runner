@@ -1,6 +1,6 @@
 [miqro-runner](../README.md) › [Globals](../globals.md) › ["loader"](_loader_.md)
 
-# External module: "loader"
+# Module: "loader"
 
 ## Index
 
@@ -15,7 +15,7 @@
 
 ▸ **runInstance**(`logger`: any, `script`: any): *Promise‹unknown›*
 
-*Defined in [src/loader.ts:26](https://github.com/claukers/miqro-runner/blob/c7ac15b/src/loader.ts#L26)*
+*Defined in [src/loader.ts:26](https://github.com/claukers/miqro-runner/blob/652df1c/src/loader.ts#L26)*
 
 **Parameters:**
 
@@ -32,7 +32,7 @@ ___
 
 ▸ **setupInstance**(`serviceName`: any, `scriptPath`: any): *any*
 
-*Defined in [src/loader.ts:11](https://github.com/claukers/miqro-runner/blob/c7ac15b/src/loader.ts#L11)*
+*Defined in [src/loader.ts:11](https://github.com/claukers/miqro-runner/blob/652df1c/src/loader.ts#L11)*
 
 **Parameters:**
 

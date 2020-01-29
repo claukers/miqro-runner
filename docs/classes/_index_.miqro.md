@@ -1,4 +1,4 @@
-[miqro-runner](../README.md) › [Globals](../globals.md) › ["miqro"](../modules/_miqro_.md) › [Miqro](_miqro_.miqro.md)
+[miqro-runner](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [Miqro](_index_.miqro.md)
 
 # Class: Miqro
 
@@ -12,46 +12,46 @@
 
 ### Constructors
 
-* [constructor](_miqro_.miqro.md#constructor)
+* [constructor](_index_.miqro.md#constructor)
 
 ### Properties
 
-* [config](_miqro_.miqro.md#private-config)
-* [instanceApp](_miqro_.miqro.md#private-instanceapp)
-* [pool](_miqro_.miqro.md#private-pool)
-* [restart](_miqro_.miqro.md#private-restart)
-* [simpleInstance](_miqro_.miqro.md#private-simpleinstance)
-* [state](_miqro_.miqro.md#private-state)
-* [defaultMaxListeners](_miqro_.miqro.md#static-defaultmaxlisteners)
+* [config](_index_.miqro.md#private-config)
+* [instanceApp](_index_.miqro.md#private-instanceapp)
+* [pool](_index_.miqro.md#private-pool)
+* [restart](_index_.miqro.md#private-restart)
+* [simpleInstance](_index_.miqro.md#private-simpleinstance)
+* [state](_index_.miqro.md#private-state)
+* [defaultMaxListeners](_index_.miqro.md#static-defaultmaxlisteners)
 
 ### Methods
 
-* [addListener](_miqro_.miqro.md#addlistener)
-* [configure](_miqro_.miqro.md#private-configure)
-* [emit](_miqro_.miqro.md#emit)
-* [eventNames](_miqro_.miqro.md#eventnames)
-* [getMaxListeners](_miqro_.miqro.md#getmaxlisteners)
-* [listenerCount](_miqro_.miqro.md#listenercount)
-* [listeners](_miqro_.miqro.md#listeners)
-* [off](_miqro_.miqro.md#off)
-* [on](_miqro_.miqro.md#on)
-* [once](_miqro_.miqro.md#once)
-* [prependListener](_miqro_.miqro.md#prependlistener)
-* [prependOnceListener](_miqro_.miqro.md#prependoncelistener)
-* [rawListeners](_miqro_.miqro.md#rawlisteners)
-* [removeAllListeners](_miqro_.miqro.md#removealllisteners)
-* [removeListener](_miqro_.miqro.md#removelistener)
-* [setMaxListeners](_miqro_.miqro.md#setmaxlisteners)
-* [setupAutostart](_miqro_.miqro.md#private-setupautostart)
-* [start](_miqro_.miqro.md#start)
-* [stop](_miqro_.miqro.md#stop)
-* [listenerCount](_miqro_.miqro.md#static-listenercount)
+* [addListener](_index_.miqro.md#addlistener)
+* [configure](_index_.miqro.md#private-configure)
+* [emit](_index_.miqro.md#emit)
+* [eventNames](_index_.miqro.md#eventnames)
+* [getMaxListeners](_index_.miqro.md#getmaxlisteners)
+* [listenerCount](_index_.miqro.md#listenercount)
+* [listeners](_index_.miqro.md#listeners)
+* [off](_index_.miqro.md#off)
+* [on](_index_.miqro.md#on)
+* [once](_index_.miqro.md#once)
+* [prependListener](_index_.miqro.md#prependlistener)
+* [prependOnceListener](_index_.miqro.md#prependoncelistener)
+* [rawListeners](_index_.miqro.md#rawlisteners)
+* [removeAllListeners](_index_.miqro.md#removealllisteners)
+* [removeListener](_index_.miqro.md#removelistener)
+* [setMaxListeners](_index_.miqro.md#setmaxlisteners)
+* [setupAutostart](_index_.miqro.md#private-setupautostart)
+* [start](_index_.miqro.md#start)
+* [stop](_index_.miqro.md#stop)
+* [listenerCount](_index_.miqro.md#static-listenercount)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new Miqro**(`config`: [IMicroConfig](../interfaces/_index_.imicroconfig.md)): *[Miqro](_miqro_.miqro.md)*
+\+ **new Miqro**(`config`: [IMicroConfig](../interfaces/_index_.imicroconfig.md)): *[Miqro](_index_.miqro.md)*
 
 *Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/652df1c/src/miqro.ts#L25)*
 
@@ -61,7 +61,7 @@ Name | Type |
 ------ | ------ |
 `config` | [IMicroConfig](../interfaces/_index_.imicroconfig.md) |
 
-**Returns:** *[Miqro](_miqro_.miqro.md)*
+**Returns:** *[Miqro](_index_.miqro.md)*
 
 ## Properties
 
@@ -107,7 +107,7 @@ ___
 
 ### `Private` state
 
-• **state**: *[IMiqroState](../modules/_miqro_.md#imiqrostate)* = "stopped"
+• **state**: *[IMiqroState](../modules/_index_.md#imiqrostate)* = "stopped"
 
 *Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/652df1c/src/miqro.ts#L25)*
 

@@ -1,4 +1,4 @@
-[miqro-runner](../README.md) › [Globals](../globals.md) › ["miqro"](../modules/_miqro_.md) › [IMicroConfig](_miqro_.imicroconfig.md)
+[miqro-runner](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [IMicroConfig](_index_.imicroconfig.md)
 
 # Interface: IMicroConfig
 
@@ -10,16 +10,16 @@
 
 ### Properties
 
-* [mode](_miqro_.imicroconfig.md#optional-mode)
-* [name](_miqro_.imicroconfig.md#name)
-* [nodes](_miqro_.imicroconfig.md#optional-nodes)
-* [service](_miqro_.imicroconfig.md#service)
+* [mode](_index_.imicroconfig.md#optional-mode)
+* [name](_index_.imicroconfig.md#name)
+* [nodes](_index_.imicroconfig.md#optional-nodes)
+* [service](_index_.imicroconfig.md#service)
 
 ## Properties
 
 ### `Optional` mode
 
-• **mode**? : *[IMode](../modules/_miqro_.md#imode)*
+• **mode**? : *[IMode](../modules/_index_.md#imode)*
 
 *Defined in [src/miqro.ts:15](https://github.com/claukers/miqro-runner/blob/652df1c/src/miqro.ts#L15)*
 

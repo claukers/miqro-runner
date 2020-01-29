@@ -4,7 +4,7 @@
 
 ## Index
 
-### External modules
+### Modules
 
 * ["cli/cli"](modules/_cli_cli_.md)
 * ["cli/start"](modules/_cli_start_.md)
