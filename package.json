@@ -25,15 +25,15 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "miqro-core": "^0.2.2",
-    "miqro-express": "^0.4.2",
+    "miqro-core": "^0.2.3",
+    "miqro-express": "^0.4.5",
     "script-pool": "^1.0.1",
     "watch": "^1.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.6",
     "@types/express": "^4.17.2",
-    "@types/node": "^12.12.14",
+    "@types/node": "^12.12.26",
     "@types/sinon": "^7.5.1",
     "chai": "^4.2.0",
     "lodash.template": ">=4.5.0",
