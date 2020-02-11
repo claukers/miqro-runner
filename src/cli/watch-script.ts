@@ -1,3 +1,3 @@
 import {startWatch} from "./watch-util";
 
-startWatch("start");
+startWatch("start-script");

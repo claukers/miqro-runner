@@ -5,7 +5,9 @@ import {resolve} from "path";
 
 // noinspection SpellCheckingInspection
 CLIUtil.cliFlow({
-  start: {module: resolve(__dirname, "start"), description: "starts a microservice"},
-  watch: {module: resolve(__dirname, "watch"), description: "starts a microservice in watch mode on the service dir"},
-  version: {module: resolve(__dirname, "version"), description: "prints miqro-runner version."}
+  start: {module: resolve(__dirname, "start"), description: "\tstarts a microservice"},
+  ["start-script"]: {module: resolve(__dirname, "start-script"), description: "starts a script"},
+  watch: {module: resolve(__dirname, "watch"), description: "\tstarts a microservice in watch mode on the service dir"},
+  ["watch-script"]: {module: resolve(__dirname, "watch-script"), description: "starts a script in watch mode on the script dir"},
+  version: {module: resolve(__dirname, "version"), description: "\tprints miqro-runner version."}
 }, "miqro-runner", console);

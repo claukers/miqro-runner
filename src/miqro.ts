@@ -18,13 +18,13 @@ export interface IMicroConfig {
 
 // noinspection SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection
 export class Miqro extends EventEmitter {
+  protected instanceApp;
+  protected simpleInstance = null;
   private pool;
-  private instanceApp;
-  private simpleInstance = null;
   private restart = null;
   private state: IMiqroState = "stopped";
 
-  constructor(private config: IMicroConfig) {
+  constructor(protected config: IMicroConfig) {
     super();
     this.configure(config);
   }
@@ -39,8 +39,7 @@ export class Miqro extends EventEmitter {
       this.state = "started";
       await this.setupAutostart();
     } else if (this.config.mode === "simple") {
-      this.simpleInstance = setupInstance(this.config.name, this.config.service);
-      this.instanceApp = await runInstance(this.simpleInstance.logger, this.simpleInstance.script);
+      await this.simpleStart();
       this.state = "started";
     }
   }
@@ -56,9 +55,22 @@ export class Miqro extends EventEmitter {
       this.state = "stopped";
       this.configure(this.config);
     } else if (this.instanceApp) {
-      this.instanceApp.server.close();
+      await this.simpleStop();
       this.state = "stopped";
     }
+  }
+
+  protected async simpleStop() {
+    this.instanceApp.server.close();
+  }
+
+  protected async simpleStart() {
+    this.simpleInstance = setupInstance(this.config.name, this.config.service);
+    this.instanceApp = await runInstance(this.simpleInstance.logger, this.simpleInstance.script);
+  }
+
+  protected resolveScriptPath() {
+    return resolve(__dirname, "instance");
   }
 
   private configure(config) {
@@ -74,7 +86,7 @@ export class Miqro extends EventEmitter {
           max: config.nodes,
           autostart: false,
           testOnBorrow: true
-        }, resolve(__dirname, "instance"), [config.name, config.service]);
+        }, this.resolveScriptPath(), [config.name, config.service]);
         this.pool.on("factoryCreateError", (err) => {
           this.emit("factoryCreateError", err);
         });
@@ -92,7 +104,7 @@ export class Miqro extends EventEmitter {
           max: config.nodes,
           autostart: false,
           testOnBorrow: true
-        }, resolve(__dirname, "instance"), [config.name, config.service]);
+        }, this.resolveScriptPath(), [config.name, config.service]);
         this.pool.on("factoryCreateError", (err) => {
           this.emit("factoryCreateError", err);
         });
