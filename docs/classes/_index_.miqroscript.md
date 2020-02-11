@@ -1,64 +1,57 @@
-[miqro-runner](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [Miqro](_index_.miqro.md)
+[miqro-runner](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [MiqroScript](_index_.miqroscript.md)
 
-# Class: Miqro
+# Class: MiqroScript
 
 ## Hierarchy
 
-* EventEmitter
+  ↳ [Miqro](_index_.miqro.md)
 
-  ↳ **Miqro**
-
-  ↳ [MiqroScript](_index_.miqroscript.md)
-
-  ↳ [MiqroScript](_miqroscript_.miqroscript.md)
+  ↳ **MiqroScript**
 
 ## Index
 
 ### Constructors
 
-* [constructor](_index_.miqro.md#constructor)
+* [constructor](_index_.miqroscript.md#constructor)
 
 ### Properties
 
-* [config](_index_.miqro.md#protected-config)
-* [instanceApp](_index_.miqro.md#protected-instanceapp)
-* [pool](_index_.miqro.md#private-pool)
-* [restart](_index_.miqro.md#private-restart)
-* [simpleInstance](_index_.miqro.md#protected-simpleinstance)
-* [state](_index_.miqro.md#private-state)
-* [defaultMaxListeners](_index_.miqro.md#static-defaultmaxlisteners)
+* [config](_index_.miqroscript.md#protected-config)
+* [instanceApp](_index_.miqroscript.md#protected-instanceapp)
+* [simpleInstance](_index_.miqroscript.md#protected-simpleinstance)
+* [defaultMaxListeners](_index_.miqroscript.md#static-defaultmaxlisteners)
 
 ### Methods
 
-* [addListener](_index_.miqro.md#addlistener)
-* [configure](_index_.miqro.md#private-configure)
-* [emit](_index_.miqro.md#emit)
-* [eventNames](_index_.miqro.md#eventnames)
-* [getMaxListeners](_index_.miqro.md#getmaxlisteners)
-* [listenerCount](_index_.miqro.md#listenercount)
-* [listeners](_index_.miqro.md#listeners)
-* [off](_index_.miqro.md#off)
-* [on](_index_.miqro.md#on)
-* [once](_index_.miqro.md#once)
-* [prependListener](_index_.miqro.md#prependlistener)
-* [prependOnceListener](_index_.miqro.md#prependoncelistener)
-* [rawListeners](_index_.miqro.md#rawlisteners)
-* [removeAllListeners](_index_.miqro.md#removealllisteners)
-* [removeListener](_index_.miqro.md#removelistener)
-* [resolveScriptPath](_index_.miqro.md#protected-resolvescriptpath)
-* [setMaxListeners](_index_.miqro.md#setmaxlisteners)
-* [setupAutostart](_index_.miqro.md#private-setupautostart)
-* [simpleStart](_index_.miqro.md#protected-simplestart)
-* [simpleStop](_index_.miqro.md#protected-simplestop)
-* [start](_index_.miqro.md#start)
-* [stop](_index_.miqro.md#stop)
-* [listenerCount](_index_.miqro.md#static-listenercount)
+* [addListener](_index_.miqroscript.md#addlistener)
+* [emit](_index_.miqroscript.md#emit)
+* [eventNames](_index_.miqroscript.md#eventnames)
+* [getMaxListeners](_index_.miqroscript.md#getmaxlisteners)
+* [listenerCount](_index_.miqroscript.md#listenercount)
+* [listeners](_index_.miqroscript.md#listeners)
+* [off](_index_.miqroscript.md#off)
+* [on](_index_.miqroscript.md#on)
+* [once](_index_.miqroscript.md#once)
+* [prependListener](_index_.miqroscript.md#prependlistener)
+* [prependOnceListener](_index_.miqroscript.md#prependoncelistener)
+* [rawListeners](_index_.miqroscript.md#rawlisteners)
+* [removeAllListeners](_index_.miqroscript.md#removealllisteners)
+* [removeListener](_index_.miqroscript.md#removelistener)
+* [resolveScriptPath](_index_.miqroscript.md#protected-resolvescriptpath)
+* [setMaxListeners](_index_.miqroscript.md#setmaxlisteners)
+* [simpleStart](_index_.miqroscript.md#protected-simplestart)
+* [simpleStop](_index_.miqroscript.md#protected-simplestop)
+* [start](_index_.miqroscript.md#start)
+* [stop](_index_.miqroscript.md#stop)
+* [listenerCount](_index_.miqroscript.md#static-listenercount)
 
 ## Constructors
 
 ###  constructor
 
-\+ **new Miqro**(`config`: [IMicroConfig](../interfaces/_index_.imicroconfig.md)): *[Miqro](_index_.miqro.md)*
+\+ **new MiqroScript**(`config`: [IMicroConfig](../interfaces/_index_.imicroconfig.md)): *[MiqroScript](_index_.miqroscript.md)*
+
+*Inherited from [Miqro](_index_.miqro.md).[constructor](_index_.miqro.md#constructor)*
 
 *Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L25)*
 
@@ -68,13 +61,15 @@ Name | Type |
 ------ | ------ |
 `config` | [IMicroConfig](../interfaces/_index_.imicroconfig.md) |
 
-**Returns:** *[Miqro](_index_.miqro.md)*
+**Returns:** *[MiqroScript](_index_.miqroscript.md)*
 
 ## Properties
 
 ### `Protected` config
 
 • **config**: *[IMicroConfig](../interfaces/_index_.imicroconfig.md)*
+
+*Inherited from [Miqro](_index_.miqro.md).[config](_index_.miqro.md#protected-config)*
 
 *Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L27)*
 
@@ -84,23 +79,9 @@ ___
 
 • **instanceApp**: *any*
 
+*Inherited from [Miqro](_index_.miqro.md).[instanceApp](_index_.miqro.md#protected-instanceapp)*
+
 *Defined in [src/miqro.ts:21](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L21)*
-
-___
-
-### `Private` pool
-
-• **pool**: *any*
-
-*Defined in [src/miqro.ts:23](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L23)*
-
-___
-
-### `Private` restart
-
-• **restart**: *any* = null
-
-*Defined in [src/miqro.ts:24](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L24)*
 
 ___
 
@@ -108,15 +89,9 @@ ___
 
 • **simpleInstance**: *any* = null
 
+*Inherited from [Miqro](_index_.miqro.md).[simpleInstance](_index_.miqro.md#protected-simpleinstance)*
+
 *Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L22)*
-
-___
-
-### `Private` state
-
-• **state**: *[IMiqroState](../modules/_index_.md#imiqrostate)* = "stopped"
-
-*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L25)*
 
 ___
 
@@ -155,22 +130,6 @@ Name | Type |
 `...args` | any[] |
 
 **Returns:** *this*
-
-___
-
-### `Private` configure
-
-▸ **configure**(`config`: any): *void*
-
-*Defined in [src/miqro.ts:76](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L76)*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`config` | any |
-
-**Returns:** *void*
 
 ___
 
@@ -475,7 +434,9 @@ ___
 
 ▸ **resolveScriptPath**(): *string*
 
-*Defined in [src/miqro.ts:72](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L72)*
+*Overrides [Miqro](_index_.miqro.md).[resolveScriptPath](_index_.miqro.md#protected-resolvescriptpath)*
+
+*Defined in [src/miqroscript.ts:14](https://github.com/claukers/miqro-runner/blob/9711821/src/miqroscript.ts#L14)*
 
 **Returns:** *string*
 
@@ -501,21 +462,13 @@ Name | Type |
 
 ___
 
-### `Private` setupAutostart
-
-▸ **setupAutostart**(): *Promise‹void›*
-
-*Defined in [src/miqro.ts:126](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L126)*
-
-**Returns:** *Promise‹void›*
-
-___
-
 ### `Protected` simpleStart
 
 ▸ **simpleStart**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:67](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L67)*
+*Overrides [Miqro](_index_.miqro.md).[simpleStart](_index_.miqro.md#protected-simplestart)*
+
+*Defined in [src/miqroscript.ts:10](https://github.com/claukers/miqro-runner/blob/9711821/src/miqroscript.ts#L10)*
 
 **Returns:** *Promise‹void›*
 
@@ -525,7 +478,9 @@ ___
 
 ▸ **simpleStop**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:63](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L63)*
+*Overrides [Miqro](_index_.miqro.md).[simpleStop](_index_.miqro.md#protected-simplestop)*
+
+*Defined in [src/miqroscript.ts:6](https://github.com/claukers/miqro-runner/blob/9711821/src/miqroscript.ts#L6)*
 
 **Returns:** *Promise‹void›*
 
@@ -534,6 +489,8 @@ ___
 ###  start
 
 ▸ **start**(): *Promise‹void›*
+
+*Inherited from [Miqro](_index_.miqro.md).[start](_index_.miqro.md#start)*
 
 *Defined in [src/miqro.ts:32](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L32)*
 
@@ -544,6 +501,8 @@ ___
 ###  stop
 
 ▸ **stop**(): *Promise‹void›*
+
+*Inherited from [Miqro](_index_.miqro.md).[stop](_index_.miqro.md#stop)*
 
 *Defined in [src/miqro.ts:47](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L47)*
 
