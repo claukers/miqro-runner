@@ -9,7 +9,8 @@ import { setupMiddleware } from "miqro-express";
 import * as  path from "path";
 
 export const setupInstance = (serviceName, scriptPath): any => {
-  Util.setupInstanceEnv(serviceName, scriptPath);
+  // Util.setupInstanceEnv(serviceName, scriptPath);
+  Util.setupSimpleEnv();
   Util.loadConfig();
   const logger = Util.getLogger(`${serviceName}`);
   logger.info(`config loaded from [${process.env.MIQRO_DIRNAME}]`);
