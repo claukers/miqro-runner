@@ -20,6 +20,10 @@ describe('lib.util.loader unit tests', function () {
       })
     }
   };
+
+  const FakeConfigPathResolver = {
+    getBaseDirname: sinon.fake()
+  };
   const fakePath = {
     resolve: sinon.fake()
   };
@@ -68,6 +72,7 @@ describe('lib.util.loader unit tests', function () {
       return fakeLogger;
     }),
     setupInstanceEnv: sinon.fake(),
+    setupSimpleEnv: sinon.fake(),
     loadConfig: sinon.fake(),
     checkEnvVariables: sinon.fake(),
   }
@@ -87,7 +92,7 @@ describe('lib.util.loader unit tests', function () {
     // rewiremock.default("../db").with(fakeDatabase);
     rewiremock.default("http").with(fakeHttp);
     rewiremock.default("https").with(fakeHttps);
-    rewiremock.default(miqroCorePath).with({ Util: FakeUtil });
+    rewiremock.default(miqroCorePath).with({ Util: FakeUtil, ConfigPathResolver: FakeConfigPathResolver });
     rewiremock.default("miqro-express").with({ setupMiddleware: fakeMiddleware.setupMiddleware });
 
     rewiremock.default("nodeScript").with(fakeScriptModule);
@@ -122,13 +127,13 @@ describe('lib.util.loader unit tests', function () {
       const loaders = require("../src/loader");
       const name = "nodeName";
       const script = "nodeScript";
-      const oldCount = FakeUtil.setupInstanceEnv.callCount;
+      const oldCount = FakeUtil.setupSimpleEnv.callCount;
       const setupRet = loaders.setupInstance(name, script);
-      chai.expect(FakeUtil.setupInstanceEnv.callCount).to.be.equals(oldCount + 1);
-      const serviceNameArg = FakeUtil.setupInstanceEnv.args[FakeUtil.setupInstanceEnv.args.length - 1][0]
-      const scriptArg = FakeUtil.setupInstanceEnv.args[FakeUtil.setupInstanceEnv.args.length - 1][1]
+      chai.expect(FakeUtil.setupSimpleEnv.callCount).to.be.equals(oldCount + 1);
+      /*const serviceNameArg = FakeUtil.setupSimpleEnv.args[FakeUtil.setupInstanceEnv.args.length - 1][0]
+      const scriptArg = FakeUtil.setupSimpleEnv.args[FakeUtil.setupInstanceEnv.args.length - 1][1]
       chai.expect(serviceNameArg).to.be.equals(name);
-      chai.expect(scriptArg).to.be.equals(script);
+      chai.expect(scriptArg).to.be.equals(script);*/
       chai.expect(setupRet.script).to.be.equals(fakeScriptModule);
       chai.expect(setupRet.logger).to.be.equals(fakeLogger);
     };
