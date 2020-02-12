@@ -4,12 +4,13 @@ import * as express from "express";
 import * as fs from "fs";
 import * as http from "http";
 import * as https from "https";
-import { Util } from "miqro-core";
-import { setupMiddleware } from "miqro-express";
+import {ConfigPathResolver, Util} from "miqro-core";
+import {setupMiddleware} from "miqro-express";
 import * as  path from "path";
 
 export const setupInstance = (serviceName, scriptPath): any => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
+  process.env.MIQRO_DIRNAME = process.env.MIQRO_DIRNAME ? process.env.MIQRO_DIRNAME : ConfigPathResolver.getBaseDirname();
   Util.setupSimpleEnv();
   Util.loadConfig();
   const logger = Util.getLogger(`${serviceName}`);
@@ -40,7 +41,7 @@ export const runInstance = async (logger, script) => {
         const key = fs.readFileSync(path.resolve(process.env.HTTPS_KEY), "utf8");
         const cert = fs.readFileSync(path.resolve(process.env.HTTPS_CERT), "utf8");
         const ca = fs.readFileSync(path.resolve(process.env.HTTPS_CA), "utf8");
-        server = https.createServer({ key, cert, ca }, app);
+        server = https.createServer({key, cert, ca}, app);
       } else {
         server = http.createServer(app);
       }
@@ -62,7 +63,7 @@ export const runInstance = async (logger, script) => {
         logger.debug("setting up clean up handlers");
         process.on("SIGINT", cleanUp);
         process.on("SIGTERM", cleanUp);
-        resolve({ app, server });
+        resolve({app, server});
       });
     } catch (e) {
       logger.error(e);
