@@ -24,7 +24,7 @@
 
 Ƭ **IMiqroState**: *"stopping" | "stopped" | "starting" | "started"*
 
-*Defined in [src/miqro.ts:10](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L10)*
+*Defined in [src/miqro.ts:10](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L10)*
 
 ___
 
@@ -32,4 +32,4 @@ ___
 
 Ƭ **IMode**: *"cluster" | "fork" | "simple"*
 
-*Defined in [src/miqro.ts:8](https://github.com/claukers/miqro-runner/blob/9711821/src/miqro.ts#L8)*
+*Defined in [src/miqro.ts:8](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L8)*

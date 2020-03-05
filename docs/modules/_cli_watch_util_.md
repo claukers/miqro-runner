@@ -14,7 +14,7 @@
 
 ▸ **startWatch**(`cmd`: string): *void*
 
-*Defined in [src/cli/watch-util.ts:55](https://github.com/claukers/miqro-runner/blob/9711821/src/cli/watch-util.ts#L55)*
+*Defined in [src/cli/watch-util.ts:54](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/cli/watch-util.ts#L54)*
 
 **Parameters:**
 
