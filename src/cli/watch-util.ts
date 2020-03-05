@@ -24,7 +24,6 @@ const restart = (cmd: string, silent?) => {
     const start = () => {
       logger.log("running");
       proc = cp.spawn("node", [path.resolve(__dirname, "cli.js"), cmd, nodes, mode, service], {
-        cwd: serviceDirname,
         env: process.env,
         windowsHide: true
       });
