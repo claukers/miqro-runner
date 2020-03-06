@@ -1,5 +1,4 @@
 import {resolve} from "path";
-import {runInstance, setupInstance} from "./loader";
 import {Miqro} from "./miqro";
 
 export class MiqroScript extends Miqro {
