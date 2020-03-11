@@ -24,7 +24,8 @@ describe('lib.Miqro.start/stop unit tests', function () {
     on: sinon.fake(),
     acquire: sinon.fake(async () => {
       return {
-        once: sinon.fake()
+        once: sinon.fake(),
+        on: sinon.fake()
       };
     }),
     release: sinon.fake(async () => {

@@ -37,7 +37,7 @@ export class Miqro extends EventEmitter {
     if (this.pool) {
       await this.pool.start();
       this.state = "started";
-      await this.setupAutostart();
+      await this.setupAutostartAndBroadcast();
     } else if (this.config.mode === "simple") {
       await this.simpleStart();
       this.state = "started";
@@ -123,7 +123,7 @@ export class Miqro extends EventEmitter {
   }
 
   // noinspection SpellCheckingInspection
-  private async setupAutostart() {
+  private async setupAutostartAndBroadcast() {
     if (this.state !== "started") {
       // noinspection SpellCheckingInspection
       throw new Error(`cannot setupAutostart if not started!`);
@@ -140,14 +140,26 @@ export class Miqro extends EventEmitter {
           logger.info(`restarting dead workers`);
           if (this.state === "started") {
             // noinspection SpellCheckingInspection
-            await this.setupAutostart();
+            await this.setupAutostartAndBroadcast();
           } else {
             logger.info(`restarting canceled because miqro not started`);
           }
         }, 2000);
       });
     }
+    // setup broadcast and release
     for (const instance of instances) {
+      try {
+        instance.on("message", (msg) => {
+          for (const other of instances) {
+            if (other !== instance) {
+              other.send(msg);
+            }
+          }
+        });
+      } catch (e) {
+        logger.error(e);
+      }
       await this.pool.release(instance);
     }
   }
