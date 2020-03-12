@@ -4,7 +4,7 @@ import * as sinon from 'sinon';
 import * as path from 'path';
 import rewiremockdefault, * as rewiremock from 'rewiremock';
 
-const miqroCorePath = "miqro-core";
+const miqroCorePath = "@miqro/core";
 
 describe('lib.util.loader unit tests', function () {
   this.timeout(100000);
@@ -93,7 +93,7 @@ describe('lib.util.loader unit tests', function () {
     rewiremock.default("http").with(fakeHttp);
     rewiremock.default("https").with(fakeHttps);
     rewiremock.default(miqroCorePath).with({ Util: FakeUtil, ConfigPathResolver: FakeConfigPathResolver });
-    rewiremock.default("miqro-express").with({ setupMiddleware: fakeMiddleware.setupMiddleware });
+    rewiremock.default("@miqro/handlers").with({ setupMiddleware: fakeMiddleware.setupMiddleware });
 
     rewiremock.default("nodeScript").with(fakeScriptModule);
     rewiremock.default(pathrc).with({ "models-path": "models" });

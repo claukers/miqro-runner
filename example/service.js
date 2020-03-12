@@ -1,11 +1,11 @@
 const {
   Util,
   ParseOptionsError,
-} = require("miqro-core");
+} = require("@miqro/core");
 const {
   Handler,
   ResponseHandler
-} = require("miqro-express");
+} = require("@miqro/handlers");
 
 const logger = Util.getLogger("posts.js");
 

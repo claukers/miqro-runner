@@ -3,7 +3,7 @@ import * as chai from 'chai';
 import * as path from 'path';
 import * as rewiremock from 'rewiremock';
 
-const miqroCorePath = "miqro-core";
+const miqroCorePath = "@miqro/core";
 
 describe('Zexample start', function() {
   this.timeout(100000);
@@ -13,9 +13,9 @@ describe('Zexample start', function() {
     rewiremock.default.disable();
     rewiremock.default.enable();
     const miqroCore = require(miqroCorePath);
-    const miqroExpress = require("miqro-express");
-    rewiremock.default("miqro-core").with(miqroCore);
-    rewiremock.default("miqro-express").with(miqroExpress);
+    const miqroExpress = require("@miqro/handlers");
+    rewiremock.default("@miqro/core").with(miqroCore);
+    rewiremock.default("@miqro/handlers").with(miqroExpress);
     done();
   });
   after((done) => {

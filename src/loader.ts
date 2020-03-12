@@ -1,11 +1,11 @@
 "use strict";
 
+import {ConfigPathResolver, Util} from "@miqro/core";
+import {setupMiddleware} from "@miqro/handlers";
 import * as express from "express";
 import * as fs from "fs";
 import * as http from "http";
 import * as https from "https";
-import {ConfigPathResolver, Util} from "miqro-core";
-import {setupMiddleware} from "miqro-express";
 import * as  path from "path";
 
 export const setupInstance = (serviceName, scriptPath): any => {

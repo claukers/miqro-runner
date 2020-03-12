@@ -1,4 +1,4 @@
-const {Util} = require("miqro-core");
+const {Util} = require("@miqro/handlers");
 Util.loadConfig();
 
 const logger = Util.getLogger("seconds");
