@@ -30,10 +30,7 @@ export const runInstance = async (logger, script) => {
   return new Promise(async (resolve, reject) => {
     try {
       logger.info(`launching script`);
-      const app = await script(await setupMiddleware(express(), logger));
-      const errorHandler = (err) => {
-        reject(err);
-      };
+      const app = express();
       let server = null;
       if (process.env.HTTPS_ENABLE === "true") {
         logger.info(`HTTPS enabled`);
@@ -45,6 +42,10 @@ export const runInstance = async (logger, script) => {
       } else {
         server = http.createServer(app);
       }
+      await script(await setupMiddleware(app, logger), server);
+      const errorHandler = (err) => {
+        reject(err);
+      };
       server.once("error", errorHandler);
       server.listen(process.env.PORT, () => {
         logger.info(`script started on [${process.env.PORT}]`);
