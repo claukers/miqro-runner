@@ -1,4 +1,4 @@
-[miqro-runner](../README.md) › [Globals](../globals.md) › ["miqroscript"](_miqroscript_.md)
+[@miqro/runner](../README.md) › [Globals](../globals.md) › ["miqroscript"](_miqroscript_.md)
 
 # Module: "miqroscript"
 

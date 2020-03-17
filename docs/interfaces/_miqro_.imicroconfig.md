@@ -1,4 +1,4 @@
-[miqro-runner](../README.md) › [Globals](../globals.md) › ["miqro"](../modules/_miqro_.md) › [IMicroConfig](_miqro_.imicroconfig.md)
+[@miqro/runner](../README.md) › [Globals](../globals.md) › ["miqro"](../modules/_miqro_.md) › [IMicroConfig](_miqro_.imicroconfig.md)
 
 # Interface: IMicroConfig
 
@@ -21,7 +21,7 @@
 
 • **mode**? : *[IMode](../modules/_miqro_.md#imode)*
 
-*Defined in [src/miqro.ts:15](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L15)*
+*Defined in [src/miqro.ts:15](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L15)*
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 • **name**: *string*
 
-*Defined in [src/miqro.ts:13](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L13)*
+*Defined in [src/miqro.ts:13](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L13)*
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 • **nodes**? : *number*
 
-*Defined in [src/miqro.ts:14](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L14)*
+*Defined in [src/miqro.ts:14](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L14)*
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 • **service**: *string*
 
-*Defined in [src/miqro.ts:16](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L16)*
+*Defined in [src/miqro.ts:16](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L16)*

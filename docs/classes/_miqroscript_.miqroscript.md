@@ -1,10 +1,10 @@
-[miqro-runner](../README.md) › [Globals](../globals.md) › ["miqroscript"](../modules/_miqroscript_.md) › [MiqroScript](_miqroscript_.miqroscript.md)
+[@miqro/runner](../README.md) › [Globals](../globals.md) › ["miqroscript"](../modules/_miqroscript_.md) › [MiqroScript](_miqroscript_.miqroscript.md)
 
 # Class: MiqroScript
 
 ## Hierarchy
 
-  ↳ [Miqro](_index_.miqro.md)
+  ↳ [Miqro](_miqro_.miqro.md)
 
   ↳ **MiqroScript**
 
@@ -49,17 +49,17 @@
 
 ###  constructor
 
-\+ **new MiqroScript**(`config`: [IMicroConfig](../interfaces/_index_.imicroconfig.md)): *[MiqroScript](_miqroscript_.miqroscript.md)*
+\+ **new MiqroScript**(`config`: [IMicroConfig](../interfaces/_miqro_.imicroconfig.md)): *[MiqroScript](_miqroscript_.miqroscript.md)*
 
-*Inherited from [Miqro](_index_.miqro.md).[constructor](_index_.miqro.md#constructor)*
+*Inherited from [Miqro](_miqro_.miqro.md).[constructor](_miqro_.miqro.md#constructor)*
 
-*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L25)*
+*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L25)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`config` | [IMicroConfig](../interfaces/_index_.imicroconfig.md) |
+`config` | [IMicroConfig](../interfaces/_miqro_.imicroconfig.md) |
 
 **Returns:** *[MiqroScript](_miqroscript_.miqroscript.md)*
 
@@ -67,11 +67,11 @@ Name | Type |
 
 ### `Protected` config
 
-• **config**: *[IMicroConfig](../interfaces/_index_.imicroconfig.md)*
+• **config**: *[IMicroConfig](../interfaces/_miqro_.imicroconfig.md)*
 
-*Inherited from [Miqro](_index_.miqro.md).[config](_index_.miqro.md#protected-config)*
+*Inherited from [Miqro](_miqro_.miqro.md).[config](_miqro_.miqro.md#protected-config)*
 
-*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L27)*
+*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L27)*
 
 ___
 
@@ -79,9 +79,9 @@ ___
 
 • **instanceApp**: *any*
 
-*Inherited from [Miqro](_index_.miqro.md).[instanceApp](_index_.miqro.md#protected-instanceapp)*
+*Inherited from [Miqro](_miqro_.miqro.md).[instanceApp](_miqro_.miqro.md#protected-instanceapp)*
 
-*Defined in [src/miqro.ts:21](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L21)*
+*Defined in [src/miqro.ts:21](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L21)*
 
 ___
 
@@ -89,9 +89,9 @@ ___
 
 • **simpleInstance**: *any* = null
 
-*Inherited from [Miqro](_index_.miqro.md).[simpleInstance](_index_.miqro.md#protected-simpleinstance)*
+*Inherited from [Miqro](_miqro_.miqro.md).[simpleInstance](_miqro_.miqro.md#protected-simpleinstance)*
 
-*Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L22)*
+*Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L22)*
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 ▪ **defaultMaxListeners**: *number*
 
-*Inherited from [Miqro](_index_.miqro.md).[defaultMaxListeners](_index_.miqro.md#static-defaultmaxlisteners)*
+*Inherited from [Miqro](_miqro_.miqro.md).[defaultMaxListeners](_miqro_.miqro.md#static-defaultmaxlisteners)*
 
 Defined in node_modules/@types/node/events.d.ts:18
 
@@ -109,7 +109,7 @@ Defined in node_modules/@types/node/events.d.ts:18
 
 ▸ **addListener**(`event`: string | symbol, `listener`: function): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[addListener](_index_.miqro.md#addlistener)*
+*Inherited from [Miqro](_miqro_.miqro.md).[addListener](_miqro_.miqro.md#addlistener)*
 
 *Overrides void*
 
@@ -137,7 +137,7 @@ ___
 
 ▸ **emit**(`event`: string | symbol, ...`args`: any[]): *boolean*
 
-*Inherited from [Miqro](_index_.miqro.md).[emit](_index_.miqro.md#emit)*
+*Inherited from [Miqro](_miqro_.miqro.md).[emit](_miqro_.miqro.md#emit)*
 
 *Overrides void*
 
@@ -158,7 +158,7 @@ ___
 
 ▸ **eventNames**(): *Array‹string | symbol›*
 
-*Inherited from [Miqro](_index_.miqro.md).[eventNames](_index_.miqro.md#eventnames)*
+*Inherited from [Miqro](_miqro_.miqro.md).[eventNames](_miqro_.miqro.md#eventnames)*
 
 *Overrides void*
 
@@ -172,7 +172,7 @@ ___
 
 ▸ **getMaxListeners**(): *number*
 
-*Inherited from [Miqro](_index_.miqro.md).[getMaxListeners](_index_.miqro.md#getmaxlisteners)*
+*Inherited from [Miqro](_miqro_.miqro.md).[getMaxListeners](_miqro_.miqro.md#getmaxlisteners)*
 
 *Overrides void*
 
@@ -186,7 +186,7 @@ ___
 
 ▸ **listenerCount**(`type`: string | symbol): *number*
 
-*Inherited from [Miqro](_index_.miqro.md).[listenerCount](_index_.miqro.md#static-listenercount)*
+*Inherited from [Miqro](_miqro_.miqro.md).[listenerCount](_miqro_.miqro.md#static-listenercount)*
 
 *Overrides void*
 
@@ -206,7 +206,7 @@ ___
 
 ▸ **listeners**(`event`: string | symbol): *Function[]*
 
-*Inherited from [Miqro](_index_.miqro.md).[listeners](_index_.miqro.md#listeners)*
+*Inherited from [Miqro](_miqro_.miqro.md).[listeners](_miqro_.miqro.md#listeners)*
 
 *Overrides void*
 
@@ -226,7 +226,7 @@ ___
 
 ▸ **off**(`event`: string | symbol, `listener`: function): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[off](_index_.miqro.md#off)*
+*Inherited from [Miqro](_miqro_.miqro.md).[off](_miqro_.miqro.md#off)*
 
 *Overrides void*
 
@@ -254,7 +254,7 @@ ___
 
 ▸ **on**(`event`: string | symbol, `listener`: function): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[on](_index_.miqro.md#on)*
+*Inherited from [Miqro](_miqro_.miqro.md).[on](_miqro_.miqro.md#on)*
 
 *Overrides void*
 
@@ -282,7 +282,7 @@ ___
 
 ▸ **once**(`event`: string | symbol, `listener`: function): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[once](_index_.miqro.md#once)*
+*Inherited from [Miqro](_miqro_.miqro.md).[once](_miqro_.miqro.md#once)*
 
 *Overrides void*
 
@@ -310,7 +310,7 @@ ___
 
 ▸ **prependListener**(`event`: string | symbol, `listener`: function): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[prependListener](_index_.miqro.md#prependlistener)*
+*Inherited from [Miqro](_miqro_.miqro.md).[prependListener](_miqro_.miqro.md#prependlistener)*
 
 *Overrides void*
 
@@ -338,7 +338,7 @@ ___
 
 ▸ **prependOnceListener**(`event`: string | symbol, `listener`: function): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[prependOnceListener](_index_.miqro.md#prependoncelistener)*
+*Inherited from [Miqro](_miqro_.miqro.md).[prependOnceListener](_miqro_.miqro.md#prependoncelistener)*
 
 *Overrides void*
 
@@ -366,7 +366,7 @@ ___
 
 ▸ **rawListeners**(`event`: string | symbol): *Function[]*
 
-*Inherited from [Miqro](_index_.miqro.md).[rawListeners](_index_.miqro.md#rawlisteners)*
+*Inherited from [Miqro](_miqro_.miqro.md).[rawListeners](_miqro_.miqro.md#rawlisteners)*
 
 *Overrides void*
 
@@ -386,7 +386,7 @@ ___
 
 ▸ **removeAllListeners**(`event?`: string | symbol): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[removeAllListeners](_index_.miqro.md#removealllisteners)*
+*Inherited from [Miqro](_miqro_.miqro.md).[removeAllListeners](_miqro_.miqro.md#removealllisteners)*
 
 *Overrides void*
 
@@ -406,7 +406,7 @@ ___
 
 ▸ **removeListener**(`event`: string | symbol, `listener`: function): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[removeListener](_index_.miqro.md#removelistener)*
+*Inherited from [Miqro](_miqro_.miqro.md).[removeListener](_miqro_.miqro.md#removelistener)*
 
 *Overrides void*
 
@@ -434,9 +434,9 @@ ___
 
 ▸ **resolveScriptPath**(): *string*
 
-*Overrides [Miqro](_index_.miqro.md).[resolveScriptPath](_index_.miqro.md#protected-resolvescriptpath)*
+*Overrides [Miqro](_miqro_.miqro.md).[resolveScriptPath](_miqro_.miqro.md#protected-resolvescriptpath)*
 
-*Defined in [src/miqroscript.ts:14](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqroscript.ts#L14)*
+*Defined in [src/miqroscript.ts:13](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqroscript.ts#L13)*
 
 **Returns:** *string*
 
@@ -446,7 +446,7 @@ ___
 
 ▸ **setMaxListeners**(`n`: number): *this*
 
-*Inherited from [Miqro](_index_.miqro.md).[setMaxListeners](_index_.miqro.md#setmaxlisteners)*
+*Inherited from [Miqro](_miqro_.miqro.md).[setMaxListeners](_miqro_.miqro.md#setmaxlisteners)*
 
 *Overrides void*
 
@@ -466,9 +466,9 @@ ___
 
 ▸ **simpleStart**(): *Promise‹void›*
 
-*Overrides [Miqro](_index_.miqro.md).[simpleStart](_index_.miqro.md#protected-simplestart)*
+*Overrides [Miqro](_miqro_.miqro.md).[simpleStart](_miqro_.miqro.md#protected-simplestart)*
 
-*Defined in [src/miqroscript.ts:10](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqroscript.ts#L10)*
+*Defined in [src/miqroscript.ts:9](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqroscript.ts#L9)*
 
 **Returns:** *Promise‹void›*
 
@@ -478,9 +478,9 @@ ___
 
 ▸ **simpleStop**(): *Promise‹void›*
 
-*Overrides [Miqro](_index_.miqro.md).[simpleStop](_index_.miqro.md#protected-simplestop)*
+*Overrides [Miqro](_miqro_.miqro.md).[simpleStop](_miqro_.miqro.md#protected-simplestop)*
 
-*Defined in [src/miqroscript.ts:6](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqroscript.ts#L6)*
+*Defined in [src/miqroscript.ts:5](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqroscript.ts#L5)*
 
 **Returns:** *Promise‹void›*
 
@@ -490,9 +490,9 @@ ___
 
 ▸ **start**(): *Promise‹void›*
 
-*Inherited from [Miqro](_index_.miqro.md).[start](_index_.miqro.md#start)*
+*Inherited from [Miqro](_miqro_.miqro.md).[start](_miqro_.miqro.md#start)*
 
-*Defined in [src/miqro.ts:32](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L32)*
+*Defined in [src/miqro.ts:32](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L32)*
 
 **Returns:** *Promise‹void›*
 
@@ -502,9 +502,9 @@ ___
 
 ▸ **stop**(): *Promise‹void›*
 
-*Inherited from [Miqro](_index_.miqro.md).[stop](_index_.miqro.md#stop)*
+*Inherited from [Miqro](_miqro_.miqro.md).[stop](_miqro_.miqro.md#stop)*
 
-*Defined in [src/miqro.ts:47](https://github.com/claukers/miqro-runner/blob/f4e96c4/src/miqro.ts#L47)*
+*Defined in [src/miqro.ts:47](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L47)*
 
 **Returns:** *Promise‹void›*
 
@@ -514,7 +514,7 @@ ___
 
 ▸ **listenerCount**(`emitter`: EventEmitter, `event`: string | symbol): *number*
 
-*Inherited from [Miqro](_index_.miqro.md).[listenerCount](_index_.miqro.md#static-listenercount)*
+*Inherited from [Miqro](_miqro_.miqro.md).[listenerCount](_miqro_.miqro.md#static-listenercount)*
 
 Defined in node_modules/@types/node/events.d.ts:17
 

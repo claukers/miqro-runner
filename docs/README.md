@@ -1,12 +1,12 @@
-[miqro-runner](README.md) › [Globals](globals.md)
+[@miqro/runner](README.md) › [Globals](globals.md)
 
-# miqro-runner
+# @miqro/runner
 
-# miqro-runner
+# @miqro/runner
 
 **in early development not to use in production**
 
-this is a part of the ```miqro``` module and provides a simple cli for running miqro apps.
+this is a part of the ```@miqro``` modules and provides a simple cli for running miqro apps.
 
 ## runner cli
 
