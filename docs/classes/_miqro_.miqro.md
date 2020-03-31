@@ -58,7 +58,9 @@
 
 \+ **new Miqro**(`config`: [IMicroConfig](../interfaces/_miqro_.imicroconfig.md)): *[Miqro](_miqro_.miqro.md)*
 
-*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L25)*
+*Overrides void*
+
+*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L25)*
 
 **Parameters:**
 
@@ -74,7 +76,7 @@ Name | Type |
 
 • **config**: *[IMicroConfig](../interfaces/_miqro_.imicroconfig.md)*
 
-*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L27)*
+*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L27)*
 
 ___
 
@@ -82,7 +84,7 @@ ___
 
 • **instanceApp**: *any*
 
-*Defined in [src/miqro.ts:21](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L21)*
+*Defined in [src/miqro.ts:21](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L21)*
 
 ___
 
@@ -90,7 +92,7 @@ ___
 
 • **pool**: *any*
 
-*Defined in [src/miqro.ts:23](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L23)*
+*Defined in [src/miqro.ts:23](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L23)*
 
 ___
 
@@ -98,7 +100,7 @@ ___
 
 • **restart**: *any* = null
 
-*Defined in [src/miqro.ts:24](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L24)*
+*Defined in [src/miqro.ts:24](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L24)*
 
 ___
 
@@ -106,7 +108,7 @@ ___
 
 • **simpleInstance**: *any* = null
 
-*Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L22)*
+*Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L22)*
 
 ___
 
@@ -114,7 +116,7 @@ ___
 
 • **state**: *[IMiqroState](../modules/_miqro_.md#imiqrostate)* = "stopped"
 
-*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L25)*
+*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L25)*
 
 ___
 
@@ -124,7 +126,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[defaultMaxListeners](_miqro_.miqro.md#static-defaultmaxlisteners)*
 
-Defined in node_modules/@types/node/events.d.ts:18
+Defined in node_modules/@types/node/events.d.ts:45
 
 ## Methods
 
@@ -134,9 +136,7 @@ Defined in node_modules/@types/node/events.d.ts:18
 
 *Inherited from [Miqro](_miqro_.miqro.md).[addListener](_miqro_.miqro.md#addlistener)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:20
+Defined in node_modules/@types/node/globals.d.ts:547
 
 **Parameters:**
 
@@ -160,7 +160,7 @@ ___
 
 ▸ **configure**(`config`: any): *void*
 
-*Defined in [src/miqro.ts:76](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L76)*
+*Defined in [src/miqro.ts:76](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L76)*
 
 **Parameters:**
 
@@ -178,9 +178,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[emit](_miqro_.miqro.md#emit)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:32
+Defined in node_modules/@types/node/globals.d.ts:557
 
 **Parameters:**
 
@@ -199,9 +197,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[eventNames](_miqro_.miqro.md#eventnames)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:33
+Defined in node_modules/@types/node/globals.d.ts:562
 
 **Returns:** *Array‹string | symbol›*
 
@@ -213,9 +209,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[getMaxListeners](_miqro_.miqro.md#getmaxlisteners)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:29
+Defined in node_modules/@types/node/globals.d.ts:554
 
 **Returns:** *number*
 
@@ -225,11 +219,9 @@ ___
 
 ▸ **listenerCount**(`type`: string | symbol): *number*
 
-*Inherited from [Miqro](_miqro_.miqro.md).[listenerCount](_miqro_.miqro.md#static-listenercount)*
+*Inherited from [Miqro](_miqro_.miqro.md).[listenerCount](_miqro_.miqro.md#listenercount)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:34
+Defined in node_modules/@types/node/globals.d.ts:558
 
 **Parameters:**
 
@@ -247,9 +239,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[listeners](_miqro_.miqro.md#listeners)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:30
+Defined in node_modules/@types/node/globals.d.ts:555
 
 **Parameters:**
 
@@ -267,9 +257,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[off](_miqro_.miqro.md#off)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:26
+Defined in node_modules/@types/node/globals.d.ts:551
 
 **Parameters:**
 
@@ -295,9 +283,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[on](_miqro_.miqro.md#on)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:21
+Defined in node_modules/@types/node/globals.d.ts:548
 
 **Parameters:**
 
@@ -323,9 +309,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[once](_miqro_.miqro.md#once)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:22
+Defined in node_modules/@types/node/globals.d.ts:549
 
 **Parameters:**
 
@@ -351,9 +335,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[prependListener](_miqro_.miqro.md#prependlistener)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:23
+Defined in node_modules/@types/node/globals.d.ts:560
 
 **Parameters:**
 
@@ -379,9 +361,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[prependOnceListener](_miqro_.miqro.md#prependoncelistener)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:24
+Defined in node_modules/@types/node/globals.d.ts:561
 
 **Parameters:**
 
@@ -407,9 +387,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[rawListeners](_miqro_.miqro.md#rawlisteners)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:31
+Defined in node_modules/@types/node/globals.d.ts:556
 
 **Parameters:**
 
@@ -427,9 +405,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[removeAllListeners](_miqro_.miqro.md#removealllisteners)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:27
+Defined in node_modules/@types/node/globals.d.ts:552
 
 **Parameters:**
 
@@ -447,9 +423,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[removeListener](_miqro_.miqro.md#removelistener)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:25
+Defined in node_modules/@types/node/globals.d.ts:550
 
 **Parameters:**
 
@@ -473,7 +447,7 @@ ___
 
 ▸ **resolveScriptPath**(): *string*
 
-*Defined in [src/miqro.ts:72](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L72)*
+*Defined in [src/miqro.ts:72](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L72)*
 
 **Returns:** *string*
 
@@ -485,9 +459,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[setMaxListeners](_miqro_.miqro.md#setmaxlisteners)*
 
-*Overrides void*
-
-Defined in node_modules/@types/node/events.d.ts:28
+Defined in node_modules/@types/node/globals.d.ts:553
 
 **Parameters:**
 
@@ -503,7 +475,7 @@ ___
 
 ▸ **setupAutostartAndBroadcast**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:126](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L126)*
+*Defined in [src/miqro.ts:126](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L126)*
 
 **Returns:** *Promise‹void›*
 
@@ -513,7 +485,7 @@ ___
 
 ▸ **simpleStart**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:67](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L67)*
+*Defined in [src/miqro.ts:67](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L67)*
 
 **Returns:** *Promise‹void›*
 
@@ -523,7 +495,7 @@ ___
 
 ▸ **simpleStop**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:63](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L63)*
+*Defined in [src/miqro.ts:63](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L63)*
 
 **Returns:** *Promise‹void›*
 
@@ -533,7 +505,7 @@ ___
 
 ▸ **start**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:32](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L32)*
+*Defined in [src/miqro.ts:32](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L32)*
 
 **Returns:** *Promise‹void›*
 
@@ -543,7 +515,7 @@ ___
 
 ▸ **stop**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:47](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/miqro.ts#L47)*
+*Defined in [src/miqro.ts:47](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L47)*
 
 **Returns:** *Promise‹void›*
 
@@ -555,7 +527,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[listenerCount](_miqro_.miqro.md#static-listenercount)*
 
-Defined in node_modules/@types/node/events.d.ts:17
+Defined in node_modules/@types/node/events.d.ts:44
 
 **`deprecated`** since v4.0.0
 

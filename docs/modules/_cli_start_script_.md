@@ -20,7 +20,7 @@
 
 • **logger**: *Console*
 
-*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/cli/start-script.ts#L6)*
+*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/start-script.ts#L6)*
 
 ___
 
@@ -33,7 +33,7 @@ ___
   mode: mode as any
 })
 
-*Defined in [src/cli/start-script.ts:8](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/cli/start-script.ts#L8)*
+*Defined in [src/cli/start-script.ts:8](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/start-script.ts#L8)*
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **mode**: *string*
 
-*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/cli/start-script.ts#L6)*
+*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/start-script.ts#L6)*
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **name**: *any*
 
-*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/cli/start-script.ts#L6)*
+*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/start-script.ts#L6)*
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 • **nodes**: *any*
 
-*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/cli/start-script.ts#L6)*
+*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/start-script.ts#L6)*
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 • **service**: *string*
 
-*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/cli/start-script.ts#L6)*
+*Defined in [src/cli/start-script.ts:6](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/start-script.ts#L6)*
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 • **usage**: *"usage: miqro start-script [nodes=1] [mode=simple|fork|cluster] <script.js>"* = `usage: miqro start-script [nodes=1] [mode=simple|fork|cluster] <script.js>`
 
-*Defined in [src/cli/start-script.ts:4](https://github.com/claukers/miqro-runner/blob/c3a28f7/src/cli/start-script.ts#L4)*
+*Defined in [src/cli/start-script.ts:4](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/start-script.ts#L4)*
