@@ -1,13 +1,13 @@
-import {describe, it, before, after} from 'mocha';
+import {describe, it/*, before, after*/} from 'mocha';
 import * as chai from 'chai';
 import * as path from 'path';
-import * as rewiremock from 'rewiremock';
+// import * as rewiremock from 'rewiremock';
 
 const miqroCorePath = "@miqro/core";
 
 describe('Zexample start', function() {
   this.timeout(100000);
-  before((done) => {
+  /*before((done) => {
     rewiremock.default.disable();
     rewiremock.default.enable();
     rewiremock.default.disable();
@@ -21,7 +21,7 @@ describe('Zexample start', function() {
   after((done) => {
     rewiremock.default.disable();
     done();
-  });
+  });*/
   it('start the example in simple mode', (done) => {
     const test = async () => {
       const lib = require('../src/miqro');

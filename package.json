@@ -24,8 +24,8 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "@miqro/core": "git+https://github.com/claukers/miqro-core.git#develop",
-    "@miqro/handlers": "git+https://github.com/claukers/miqro-express.git#develop",
+    "@miqro/core": "^0.6.1",
+    "@miqro/handlers": "^0.6.0",
     "express": "^4.17.1",
     "script-pool": "^1.0.3",
     "watch": "^1.0.2"
@@ -39,7 +39,6 @@
     "lodash.template": "^4.5.0",
     "mocha": "^7.1.1",
     "nyc": "^15.0.0",
-    "rewiremock": "^3.13.9",
     "sinon": "^9.0.1",
     "ts-node": "^8.8.1",
     "typedoc": "0.17.0",
