@@ -13,9 +13,9 @@
 
 ### `Const` runInstance
 
-▸ **runInstance**(`logger`: any, `script`: any): *Promise‹unknown›*
+▸ **runInstance**(`logger`: any, `script`: any): *Promise‹object›*
 
-*Defined in [src/loader.ts:28](https://github.com/claukers/miqro-runner/blob/da6830b/src/loader.ts#L28)*
+*Defined in [src/loader.ts:29](https://github.com/claukers/miqro-runner/blob/c5aed02/src/loader.ts#L29)*
 
 **Parameters:**
 
@@ -24,7 +24,7 @@ Name | Type |
 `logger` | any |
 `script` | any |
 
-**Returns:** *Promise‹unknown›*
+**Returns:** *Promise‹object›*
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 ▸ **setupInstance**(`serviceName`: any, `scriptPath`: any): *any*
 
-*Defined in [src/loader.ts:11](https://github.com/claukers/miqro-runner/blob/da6830b/src/loader.ts#L11)*
+*Defined in [src/loader.ts:11](https://github.com/claukers/miqro-runner/blob/c5aed02/src/loader.ts#L11)*
 
 **Parameters:**
 

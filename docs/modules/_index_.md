@@ -6,29 +6,17 @@
 
 ### References
 
-* [IMicroConfig](_index_.md#imicroconfig)
-* [IMiqroState](_index_.md#imiqrostate)
-* [IMode](_index_.md#imode)
+* [MicroConfigInterface](_index_.md#microconfiginterface)
 * [Miqro](_index_.md#miqro)
 * [MiqroScript](_index_.md#miqroscript)
+* [MiqroStateType](_index_.md#miqrostatetype)
+* [ModeType](_index_.md#modetype)
 
 ## References
 
-###  IMicroConfig
+###  MicroConfigInterface
 
-• **IMicroConfig**:
-
-___
-
-###  IMiqroState
-
-• **IMiqroState**:
-
-___
-
-###  IMode
-
-• **IMode**:
+• **MicroConfigInterface**:
 
 ___
 
@@ -41,3 +29,15 @@ ___
 ###  MiqroScript
 
 • **MiqroScript**:
+
+___
+
+###  MiqroStateType
+
+• **MiqroStateType**:
+
+___
+
+###  ModeType
+
+• **ModeType**:

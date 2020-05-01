@@ -10,12 +10,12 @@
 
 ### Interfaces
 
-* [IMicroConfig](../interfaces/_miqro_.imicroconfig.md)
+* [MicroConfigInterface](../interfaces/_miqro_.microconfiginterface.md)
 
 ### Type aliases
 
-* [IMiqroState](_miqro_.md#imiqrostate)
-* [IMode](_miqro_.md#imode)
+* [MiqroStateType](_miqro_.md#miqrostatetype)
+* [ModeType](_miqro_.md#modetype)
 
 ### Variables
 
@@ -23,19 +23,19 @@
 
 ## Type aliases
 
-###  IMiqroState
+###  MiqroStateType
 
-Ƭ **IMiqroState**: *"stopping" | "stopped" | "starting" | "started"*
+Ƭ **MiqroStateType**: *"stopping" | "stopped" | "starting" | "started"*
 
-*Defined in [src/miqro.ts:10](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L10)*
+*Defined in [src/miqro.ts:10](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L10)*
 
 ___
 
-###  IMode
+###  ModeType
 
-Ƭ **IMode**: *"cluster" | "fork" | "simple"*
+Ƭ **ModeType**: *"cluster" | "fork" | "simple"*
 
-*Defined in [src/miqro.ts:8](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L8)*
+*Defined in [src/miqro.ts:8](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L8)*
 
 ## Variables
 
@@ -43,4 +43,4 @@ ___
 
 • **logger**: *Console* = console
 
-*Defined in [src/miqro.ts:6](https://github.com/claukers/miqro-runner/blob/da6830b/src/miqro.ts#L6)*
+*Defined in [src/miqro.ts:6](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L6)*

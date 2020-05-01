@@ -14,7 +14,7 @@
 
 ▸ **startArgs**(`usage`: any): *object*
 
-*Defined in [src/cli/startargs.ts:4](https://github.com/claukers/miqro-runner/blob/da6830b/src/cli/startargs.ts#L4)*
+*Defined in [src/cli/startargs.ts:4](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/startargs.ts#L4)*
 
 **Parameters:**
 
@@ -24,14 +24,14 @@ Name | Type |
 
 **Returns:** *object*
 
-* **logger**: *Console*
+* **logger**: *any*
 
 * **mode**: *string*
 
 * **modulePath**: *string*
 
-* **name**: *any*
+* **name**: *string*
 
-* **nodes**: *any*
+* **nodes**: *number*
 
 * **service**: *string*
