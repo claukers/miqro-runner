@@ -5,14 +5,14 @@ import {runInstance, setupInstance} from "./loader";
 
 const logger = console;
 
-export type IMode = "cluster" | "fork" | "simple";
+export type ModeType = "cluster" | "fork" | "simple";
 
-export type IMiqroState = "stopping" | "stopped" | "starting" | "started";
+export type MiqroStateType = "stopping" | "stopped" | "starting" | "started";
 
-export interface IMicroConfig {
+export interface MicroConfigInterface {
   name: string;
   nodes?: number;
-  mode?: IMode;
+  mode?: ModeType;
   service: string;
 }
 
@@ -22,14 +22,14 @@ export class Miqro extends EventEmitter {
   protected simpleInstance = null;
   private pool;
   private restart = null;
-  private state: IMiqroState = "stopped";
+  private state: MiqroStateType = "stopped";
 
-  constructor(protected config: IMicroConfig) {
+  constructor(protected config: MicroConfigInterface) {
     super();
     this.configure(config);
   }
 
-  public async start() {
+  public async start(): Promise<void> {
     if (this.state !== "stopped") {
       throw new Error(`cannot start if not stopped!`);
     }
@@ -44,7 +44,7 @@ export class Miqro extends EventEmitter {
     }
   }
 
-  public async stop() {
+  public async stop(): Promise<void> {
     if (this.state !== "started") {
       throw new Error(`cannot stop if not started!`);
     }
@@ -60,20 +60,20 @@ export class Miqro extends EventEmitter {
     }
   }
 
-  protected async simpleStop() {
+  protected async simpleStop(): Promise<void> {
     this.instanceApp.server.close();
   }
 
-  protected async simpleStart() {
+  protected async simpleStart(): Promise<void> {
     this.simpleInstance = setupInstance(this.config.name, this.config.service);
     this.instanceApp = await runInstance(this.simpleInstance.logger, this.simpleInstance.script);
   }
 
-  protected resolveScriptPath() {
+  protected resolveScriptPath(): string {
     return resolve(__dirname, "instance");
   }
 
-  private configure(config) {
+  private configure(config): void {
     if (this.state !== "stopped") {
       throw new Error(`cannot configured if not stopped!`);
     }
@@ -123,7 +123,7 @@ export class Miqro extends EventEmitter {
   }
 
   // noinspection SpellCheckingInspection
-  private async setupAutostartAndBroadcast() {
+  private async setupAutostartAndBroadcast(): Promise<void> {
     if (this.state !== "started") {
       // noinspection SpellCheckingInspection
       throw new Error(`cannot setupAutostart if not started!`);

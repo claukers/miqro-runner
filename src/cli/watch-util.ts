@@ -12,7 +12,7 @@ const serviceDirname = path.resolve(path.dirname(service));
 let proc = null;
 
 let restartTimeout = null;
-const restart = (cmd: string, silent?) => {
+const restart = (cmd: string, silent?): void => {
   if (!silent) {
     logger.warn("restart queue");
   }
@@ -21,9 +21,9 @@ const restart = (cmd: string, silent?) => {
     if (!silent) {
       logger.warn("restarting");
     }
-    const start = () => {
+    const start = (): void => {
       logger.log("running");
-      proc = cp.spawn("node", [path.resolve(__dirname, "cli.js"), cmd, nodes, mode, service], {
+      proc = cp.spawn("node", [path.resolve(__dirname, "cli.js"), cmd, `${nodes}`, mode, service], {
         env: process.env,
         windowsHide: true
       });
@@ -51,7 +51,7 @@ const restart = (cmd: string, silent?) => {
   }, silent ? 0 : 1000);
 };
 
-export const startWatch = (cmd: string) => {
+export const startWatch = (cmd: string): void => {
   logger.log(`watching ${serviceDirname}`);
   setTimeout(() => {
     restart(cmd, true);

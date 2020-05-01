@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-export const startArgs = (usage) => {
+export const startArgs = (usage): { nodes: number; modulePath: string; name: string; mode: string; logger: any; service: string } => {
   let nodes;
   let modulePath;
   let name;

@@ -2,15 +2,15 @@ import {resolve} from "path";
 import {Miqro} from "./miqro";
 
 export class MiqroScript extends Miqro {
-  protected async simpleStop() {
+  protected async simpleStop(): Promise<void> {
     // nothing to do here
   }
 
-  protected async simpleStart() {
+  protected async simpleStart(): Promise<void> {
     require(this.config.service);
   }
 
-  protected resolveScriptPath() {
+  protected resolveScriptPath(): string {
     return resolve(this.config.service);
   }
 }

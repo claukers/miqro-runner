@@ -17,6 +17,7 @@ export const setupInstance = (serviceName, scriptPath): any => {
   logger.info(`config loaded from [${process.env.MIQRO_DIRNAME}]`);
   logger.info(`loading script from [${scriptPath}]!`);
   /* tslint:disable */
+  /* eslint-disable  @typescript-eslint/no-var-requires */
   const script = require(scriptPath);
   /* tslint:enable */
   return {
@@ -25,7 +26,7 @@ export const setupInstance = (serviceName, scriptPath): any => {
   };
 };
 
-export const runInstance = async (logger, script) => {
+export const runInstance = async (logger, script): Promise<{ app: any; server: any }> => {
   Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
   return new Promise(async (resolve, reject) => {
     try {
@@ -43,7 +44,7 @@ export const runInstance = async (logger, script) => {
         server = http.createServer(app);
       }
       await script(await setupMiddleware(app, logger), server);
-      const errorHandler = (err) => {
+      const errorHandler = (err): void => {
         reject(err);
       };
       server.once("error", errorHandler);
@@ -51,7 +52,7 @@ export const runInstance = async (logger, script) => {
         logger.info(`script started on [${process.env.PORT}]`);
         server.removeListener("error", errorHandler);
         let cleaningUp = false;
-        const cleanUp = () => {
+        const cleanUp = (): void => {
           if (!cleaningUp) {
             logger.info("cleaning up");
             server.once("close", async () => {
