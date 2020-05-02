@@ -3,9 +3,11 @@ import * as chai from 'chai';
 import * as path from 'path';
 // import * as rewiremock from 'rewiremock';
 
+process.env.NODE_ENV = "test";
+
 const miqroCorePath = "@miqro/core";
 
-describe('Zexample start', function() {
+describe('Zexample start', function () {
   this.timeout(100000);
   /*before((done) => {
     rewiremock.default.disable();

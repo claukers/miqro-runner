@@ -12,17 +12,17 @@ export const startArgs = (usage): { nodes: number; modulePath: string; name: str
     mode = "simple";
     modulePath = process.argv[3];
     nodes = 1;
-    name = path.basename(modulePath);
+    name = path.basename(modulePath, ".js");
   } else if (process.argv.length === 5) {
     mode = process.argv[3];
     modulePath = process.argv[4];
     nodes = 1;
-    name = path.basename(modulePath);
+    name = path.basename(modulePath, ".js");
   } else if (process.argv.length === 6) {
     mode = process.argv[4];
     nodes = parseInt(process.argv[3], 10);
     modulePath = process.argv[5];
-    name = path.basename(modulePath);
+    name = path.basename(modulePath, ".js");
   } else {
     logger.error(`missing args.`);
     throw new Error(usage);

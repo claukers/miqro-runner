@@ -14,9 +14,12 @@ export const setupInstance = (serviceName, scriptPath): any => {
   Util.setupSimpleEnv();
   Util.loadConfig();
   if (!ConfigPathResolver.getServiceName()) {
-    ConfigPathResolver.setServiceName(serviceName);
+    if (serviceName) {
+      ConfigPathResolver.setServiceName(serviceName);
+    }
   }
-  const logger = Util.getLogger(ConfigPathResolver.getServiceName());
+  const name = ConfigPathResolver.getServiceName();
+  const logger = Util.getLogger(`${name ? name : ""}`);
   logger.info(`config loaded from [${process.env.MIQRO_DIRNAME}]`);
   logger.info(`loading script from [${scriptPath}]!`);
   /* tslint:disable */
