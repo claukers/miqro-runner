@@ -14,7 +14,7 @@
 
 ▸ **startArgs**(`usage`: any): *object*
 
-*Defined in [src/cli/startargs.ts:4](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/startargs.ts#L4)*
+*Defined in [src/cli/startargs.ts:4](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/startargs.ts#L4)*
 
 **Parameters:**
 

@@ -6,6 +6,7 @@
 
 ### Variables
 
+* [TIMEOUT](_cli_watch_util_.md#const-timeout)
 * [logger](_cli_watch_util_.md#logger)
 * [mode](_cli_watch_util_.md#mode)
 * [nodes](_cli_watch_util_.md#nodes)
@@ -14,19 +15,30 @@
 * [service](_cli_watch_util_.md#service)
 * [serviceDirname](_cli_watch_util_.md#const-servicedirname)
 * [usage](_cli_watch_util_.md#const-usage)
+* [watches](_cli_watch_util_.md#const-watches)
 
 ### Functions
 
 * [restart](_cli_watch_util_.md#const-restart)
 * [startWatch](_cli_watch_util_.md#const-startwatch)
+* [walkSync](_cli_watch_util_.md#const-walksync)
+* [watchTree](_cli_watch_util_.md#const-watchtree)
 
 ## Variables
+
+### `Const` TIMEOUT
+
+• **TIMEOUT**: *5000* = 5000
+
+*Defined in [src/cli/watch-util.ts:15](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L15)*
+
+___
 
 ###  logger
 
 • **logger**: *any*
 
-*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L8)*
+*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L8)*
 
 ___
 
@@ -34,7 +46,7 @@ ___
 
 • **mode**: *string*
 
-*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L8)*
+*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L8)*
 
 ___
 
@@ -42,7 +54,7 @@ ___
 
 • **nodes**: *number*
 
-*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L8)*
+*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L8)*
 
 ___
 
@@ -50,7 +62,7 @@ ___
 
 • **proc**: *any* = null
 
-*Defined in [src/cli/watch-util.ts:12](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L12)*
+*Defined in [src/cli/watch-util.ts:12](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L12)*
 
 ___
 
@@ -58,7 +70,7 @@ ___
 
 • **restartTimeout**: *any* = null
 
-*Defined in [src/cli/watch-util.ts:14](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L14)*
+*Defined in [src/cli/watch-util.ts:17](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L17)*
 
 ___
 
@@ -66,15 +78,15 @@ ___
 
 • **service**: *string*
 
-*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L8)*
+*Defined in [src/cli/watch-util.ts:8](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L8)*
 
 ___
 
 ### `Const` serviceDirname
 
-• **serviceDirname**: *string* = path.resolve(path.dirname(service))
+• **serviceDirname**: *string* = statSync(resolve(service)).isDirectory() ? resolve(service) : resolve(dirname(service))
 
-*Defined in [src/cli/watch-util.ts:10](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L10)*
+*Defined in [src/cli/watch-util.ts:10](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L10)*
 
 ___
 
@@ -82,7 +94,15 @@ ___
 
 • **usage**: *"usage: miqro-runner watch [nodes=1] [mode=simple] <microservice.js>"* = `usage: miqro-runner watch [nodes=1] [mode=simple] <microservice.js>`
 
-*Defined in [src/cli/watch-util.ts:6](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L6)*
+*Defined in [src/cli/watch-util.ts:6](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L6)*
+
+___
+
+### `Const` watches
+
+• **watches**: *any[]* = []
+
+*Defined in [src/cli/watch-util.ts:14](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L14)*
 
 ## Functions
 
@@ -90,7 +110,7 @@ ___
 
 ▸ **restart**(`cmd`: string, `silent?`: any): *void*
 
-*Defined in [src/cli/watch-util.ts:15](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L15)*
+*Defined in [src/cli/watch-util.ts:41](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L41)*
 
 **Parameters:**
 
@@ -107,12 +127,54 @@ ___
 
 ▸ **startWatch**(`cmd`: string): *void*
 
-*Defined in [src/cli/watch-util.ts:54](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/watch-util.ts#L54)*
+*Defined in [src/cli/watch-util.ts:105](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L105)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
 `cmd` | string |
+
+**Returns:** *void*
+
+___
+
+### `Const` walkSync
+
+▸ **walkSync**(`dir`: any, `list`: string[]): *string[]*
+
+*Defined in [src/cli/watch-util.ts:19](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L19)*
+
+**Parameters:**
+
+Name | Type | Default |
+------ | ------ | ------ |
+`dir` | any | - |
+`list` | string[] | [] |
+
+**Returns:** *string[]*
+
+___
+
+### `Const` watchTree
+
+▸ **watchTree**(`dirname`: string, `cb`: function): *void*
+
+*Defined in [src/cli/watch-util.ts:30](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/watch-util.ts#L30)*
+
+**Parameters:**
+
+▪ **dirname**: *string*
+
+▪ **cb**: *function*
+
+▸ (`event`: string, `filename`: string): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | string |
+`filename` | string |
 
 **Returns:** *void*

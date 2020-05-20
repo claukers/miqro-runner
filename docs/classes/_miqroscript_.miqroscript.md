@@ -51,7 +51,7 @@
 
 *Inherited from [Miqro](_miqro_.miqro.md).[constructor](_miqro_.miqro.md#constructor)*
 
-*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L25)*
+*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqro.ts#L25)*
 
 **Parameters:**
 
@@ -69,7 +69,7 @@ Name | Type |
 
 *Inherited from [Miqro](_miqro_.miqro.md).[config](_miqro_.miqro.md#protected-config)*
 
-*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L27)*
+*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqro.ts#L27)*
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[instanceApp](_miqro_.miqro.md#protected-instanceapp)*
 
-*Defined in [src/miqro.ts:21](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L21)*
+*Defined in [src/miqro.ts:21](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqro.ts#L21)*
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[simpleInstance](_miqro_.miqro.md#protected-simpleinstance)*
 
-*Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L22)*
+*Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqro.ts#L22)*
 
 ## Methods
 
@@ -396,7 +396,7 @@ ___
 
 *Overrides [Miqro](_miqro_.miqro.md).[resolveScriptPath](_miqro_.miqro.md#protected-resolvescriptpath)*
 
-*Defined in [src/miqroscript.ts:13](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqroscript.ts#L13)*
+*Defined in [src/miqroscript.ts:13](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqroscript.ts#L13)*
 
 **Returns:** *string*
 
@@ -426,7 +426,7 @@ ___
 
 *Overrides [Miqro](_miqro_.miqro.md).[simpleStart](_miqro_.miqro.md#protected-simplestart)*
 
-*Defined in [src/miqroscript.ts:9](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqroscript.ts#L9)*
+*Defined in [src/miqroscript.ts:9](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqroscript.ts#L9)*
 
 **Returns:** *Promise‹void›*
 
@@ -438,7 +438,7 @@ ___
 
 *Overrides [Miqro](_miqro_.miqro.md).[simpleStop](_miqro_.miqro.md#protected-simplestop)*
 
-*Defined in [src/miqroscript.ts:5](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqroscript.ts#L5)*
+*Defined in [src/miqroscript.ts:5](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqroscript.ts#L5)*
 
 **Returns:** *Promise‹void›*
 
@@ -450,7 +450,7 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[start](_miqro_.miqro.md#start)*
 
-*Defined in [src/miqro.ts:32](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L32)*
+*Defined in [src/miqro.ts:32](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqro.ts#L32)*
 
 **Returns:** *Promise‹void›*
 
@@ -462,6 +462,6 @@ ___
 
 *Inherited from [Miqro](_miqro_.miqro.md).[stop](_miqro_.miqro.md#stop)*
 
-*Defined in [src/miqro.ts:47](https://github.com/claukers/miqro-runner/blob/c5aed02/src/miqro.ts#L47)*
+*Defined in [src/miqro.ts:47](https://github.com/claukers/miqro-runner/blob/e36bfec/src/miqro.ts#L47)*
 
 **Returns:** *Promise‹void›*

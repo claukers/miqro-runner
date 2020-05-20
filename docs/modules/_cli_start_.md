@@ -20,7 +20,7 @@
 
 • **logger**: *any*
 
-*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/start.ts#L6)*
+*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/start.ts#L6)*
 
 ___
 
@@ -33,7 +33,7 @@ ___
   mode: mode as any
 })
 
-*Defined in [src/cli/start.ts:8](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/start.ts#L8)*
+*Defined in [src/cli/start.ts:8](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/start.ts#L8)*
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **mode**: *string*
 
-*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/start.ts#L6)*
+*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/start.ts#L6)*
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **name**: *string*
 
-*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/start.ts#L6)*
+*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/start.ts#L6)*
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 • **nodes**: *number*
 
-*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/start.ts#L6)*
+*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/start.ts#L6)*
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 • **service**: *string*
 
-*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/start.ts#L6)*
+*Defined in [src/cli/start.ts:6](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/start.ts#L6)*
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 • **usage**: *"usage: miqro start [nodes=1] [mode=simple] <microservice.js>"* = `usage: miqro start [nodes=1] [mode=simple] <microservice.js>`
 
-*Defined in [src/cli/start.ts:4](https://github.com/claukers/miqro-runner/blob/c5aed02/src/cli/start.ts#L4)*
+*Defined in [src/cli/start.ts:4](https://github.com/claukers/miqro-runner/blob/e36bfec/src/cli/start.ts#L4)*

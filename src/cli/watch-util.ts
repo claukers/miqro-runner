@@ -1,5 +1,5 @@
-import * as cp from "child_process";
-import {basename, resolve, dirname, join, extname} from "path";
+import {spawn} from "child_process";
+import {basename, dirname, extname, join, resolve} from "path";
 import {existsSync, readdirSync, statSync, watch} from "fs";
 import {startArgs} from "./startargs";
 
@@ -56,7 +56,7 @@ const restart = (cmd: string, silent?): void => {
     } else {
       const start = (): void => {
         logger.log("running");
-        proc = cp.spawn("node", [resolve(__dirname, "cli.js"), cmd, `${nodes}`, mode, service], {
+        proc = spawn("node", [resolve(__dirname, "cli.js"), cmd, `${nodes}`, mode, service], {
           env: process.env,
           windowsHide: true
         });
