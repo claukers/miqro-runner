@@ -1,5 +1,5 @@
-import * as fs from "fs";
-import * as path from "path";
+import {existsSync} from "fs";
+import {resolve, basename} from "path";
 
 export const startArgs = (usage): { nodes: number; modulePath: string; name: string; mode: string; logger: any; service: string } => {
   let nodes;
@@ -12,17 +12,17 @@ export const startArgs = (usage): { nodes: number; modulePath: string; name: str
     mode = "simple";
     modulePath = process.argv[3];
     nodes = 1;
-    name = path.basename(modulePath, ".js");
+    name = basename(modulePath, ".js");
   } else if (process.argv.length === 5) {
     mode = process.argv[3];
     modulePath = process.argv[4];
     nodes = 1;
-    name = path.basename(modulePath, ".js");
+    name = basename(modulePath, ".js");
   } else if (process.argv.length === 6) {
     mode = process.argv[4];
     nodes = parseInt(process.argv[3], 10);
     modulePath = process.argv[5];
-    name = path.basename(modulePath, ".js");
+    name = basename(modulePath, ".js");
   } else {
     logger.error(`missing args.`);
     throw new Error(usage);
@@ -40,9 +40,9 @@ export const startArgs = (usage): { nodes: number; modulePath: string; name: str
     throw new Error(`<microservice.js> must be a string!\n${usage}`);
   }
 
-  const service = path.resolve(modulePath);
+  const service = resolve(modulePath);
 
-  if (!fs.existsSync(service)) {
+  if (!existsSync(service)) {
     // noinspection SpellCheckingInspection
     throw new Error(`microservice [${service}] doesnt exists!`);
   }

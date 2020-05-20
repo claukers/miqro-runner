@@ -1,54 +1,105 @@
 import * as cp from "child_process";
-import * as path from "path";
-import * as watch from "watch";
+import {basename, resolve, dirname, join, extname} from "path";
+import {existsSync, readdirSync, statSync, watch} from "fs";
 import {startArgs} from "./startargs";
 
 const usage = `usage: miqro-runner watch [nodes=1] [mode=simple] <microservice.js>`;
 
 const {nodes, mode, logger, service} = startArgs(usage);
 
-const serviceDirname = path.resolve(path.dirname(service));
+const serviceDirname = statSync(resolve(service)).isDirectory() ? resolve(service) : resolve(dirname(service));
 
 let proc = null;
 
+const watches = [];
+const TIMEOUT = 5000;
+
 let restartTimeout = null;
+
+const walkSync = (dir, list: string[] = []): string[] => {
+  readdirSync(dir).forEach(file => {
+
+    list = statSync(join(dir, file)).isDirectory()
+      ? walkSync(join(dir, file), list)
+      : list.concat(join(dir, file));
+
+  });
+  return list;
+}
+
+const watchTree = (dirname: string, cb: (event: string, filename: string) => void): void => {
+  for (const watcher of watches) {
+    watcher.close();
+  }
+  watches.splice(0, watches.length);
+  const files = walkSync(dirname);
+  for (const file of files) {
+    watches.push(watch(file, cb));
+  }
+};
+
 const restart = (cmd: string, silent?): void => {
-  if (!silent) {
-    logger.warn("restart queue");
+  if (!silent && restartTimeout === null) {
+    logger.warn(`change detected restarting in ${TIMEOUT}ms`);
   }
   clearTimeout(restartTimeout);
+  restartTimeout = null;
   restartTimeout = setTimeout(async () => {
+    restartTimeout = null;
     if (!silent) {
       logger.warn("restarting");
     }
-    const start = (): void => {
-      logger.log("running");
-      proc = cp.spawn("node", [path.resolve(__dirname, "cli.js"), cmd, `${nodes}`, mode, service], {
-        env: process.env,
-        windowsHide: true
-      });
-      proc.stdout.pipe(process.stdout);
-      proc.stderr.pipe(process.stderr);
-      proc.on("close", (code) => {
-        logger.log(`exited with code ${code}`);
-        proc = null;
-      });
-    };
-    if (proc) {
-      try {
-        proc.kill(0);
-      } catch (e) {
-        logger.error(e);
-      }
-      proc.once("close", () => {
-        start();
-      });
-      proc.kill("SIGINT");
-      proc = null;
+    if (!existsSync(serviceDirname)) {
+      logger.warn(`${serviceDirname} doesnt exists waiting...`);
+      restart(cmd, silent);
+      return;
     } else {
-      start();
+      const start = (): void => {
+        logger.log("running");
+        proc = cp.spawn("node", [resolve(__dirname, "cli.js"), cmd, `${nodes}`, mode, service], {
+          env: process.env,
+          windowsHide: true
+        });
+        proc.stdout.pipe(process.stdout);
+        proc.stderr.pipe(process.stderr);
+        proc.on("close", (code) => {
+          logger.log(`exited with code ${code}`);
+          proc = null;
+        });
+        watchTree(serviceDirname, (event, f): void => {
+          let ext = "";
+          let basedir = "";
+          let dirName = "";
+          try {
+            if (typeof f === "string") {
+              ext = extname(f);
+              basedir = dirname(f);
+              dirName = basename(basedir);
+              if (dirName !== "logs" && ext !== ".log") {
+                restart(cmd);
+              }
+            }
+          } catch (e) {
+            logger.error(e);
+          }
+        });
+      };
+      if (proc) {
+        try {
+          proc.kill(0);
+        } catch (e) {
+          logger.error(e);
+        }
+        proc.once("close", () => {
+          start();
+        });
+        proc.kill("SIGINT");
+        proc = null;
+      } else {
+        start();
+      }
     }
-  }, silent ? 0 : 1000);
+  }, silent ? 0 : TIMEOUT);
 };
 
 export const startWatch = (cmd: string): void => {
@@ -56,35 +107,4 @@ export const startWatch = (cmd: string): void => {
   setTimeout(() => {
     restart(cmd, true);
   }, 0);
-  watch.watchTree(serviceDirname, (f, curr, prev) => {
-    let ext = "";
-    let basedir = "";
-    let dirName = "";
-    try {
-      if (typeof f === "string") {
-        ext = path.extname(f);
-        basedir = path.dirname(f);
-        dirName = path.basename(basedir);
-        if (dirName !== "logs" && ext !== ".log") {
-          if (typeof f === "object" && prev === null && curr === null) {
-            // Finished walking the tree
-          } else if (prev === null) {
-            // f is a new file
-            logger.log(`${f} new file`);
-            restart(cmd);
-          } else if (curr.nlink === 0) {
-            // f was removed
-            logger.log(`${f} removed`);
-            restart(cmd);
-          } else {
-            // f was changed
-            logger.log(`change in ${f}`);
-            restart(cmd);
-          }
-        }
-      }
-    } catch (e) {
-      logger.error(e);
-    }
-  });
 };
