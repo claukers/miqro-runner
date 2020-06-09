@@ -1,11 +1,8 @@
-const {Util} = require("@miqro/handlers");
-Util.loadConfig();
+const {Util} = require("@miqro/core");
 
-const logger = Util.getLogger("seconds");
+const logger = Util.getComponentLogger("clock");
 
-let tick = true;
 setInterval(() => {
-  logger.info(tick ? "tick" : "tack");
-  tick = !tick;
+  logger.info((logger.tick = !logger.tick) ? "tick" : "tack");
 }, 1000);
 

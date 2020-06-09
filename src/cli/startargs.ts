@@ -1,7 +1,7 @@
 import {existsSync} from "fs";
-import {resolve, basename} from "path";
+import {basename, resolve} from "path";
 
-export const startArgs = (usage): { nodes: number; modulePath: string; name: string; mode: string; logger: any; service: string } => {
+export const startArgs = (usage: string): { nodes: number; modulePath: string; name: string; mode: string; logger: any; service: string } => {
   let nodes;
   let modulePath;
   let name;

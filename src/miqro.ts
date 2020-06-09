@@ -2,6 +2,7 @@ import {EventEmitter} from "events";
 import {resolve} from "path";
 import {createClusterPool, createForkPool} from "script-pool";
 import {runInstance, setupInstance} from "./loader";
+import {Logger} from "winston";
 
 const logger = console;
 
@@ -19,7 +20,7 @@ export interface MicroConfigInterface {
 // noinspection SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection
 export class Miqro extends EventEmitter {
   protected instanceApp;
-  protected simpleInstance = null;
+  protected simpleInstance: { logger: Logger } = null;
   private pool;
   private restart = null;
   private state: MiqroStateType = "stopped";
@@ -65,8 +66,8 @@ export class Miqro extends EventEmitter {
   }
 
   protected async simpleStart(): Promise<void> {
-    this.simpleInstance = setupInstance(this.config.name, this.config.service);
-    this.instanceApp = await runInstance(this.simpleInstance.logger, this.simpleInstance.script);
+    this.simpleInstance = setupInstance(this.config.name);
+    this.instanceApp = await runInstance(this.simpleInstance.logger, this.config.service);
   }
 
   protected resolveScriptPath(): string {

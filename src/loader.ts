@@ -1,6 +1,7 @@
 "use strict";
 
 import {ConfigPathResolver, Util} from "@miqro/core";
+import {Logger} from "winston";
 import {setupMiddleware} from "@miqro/handlers";
 import * as express from "express";
 import * as fs from "fs";
@@ -8,7 +9,7 @@ import * as http from "http";
 import * as https from "https";
 import * as  path from "path";
 
-export const setupInstance = (serviceName, scriptPath): any => {
+export const setupInstance = (serviceName: string): { logger: Logger } => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
   process.env.MIQRO_DIRNAME = process.env.MIQRO_DIRNAME ? process.env.MIQRO_DIRNAME : ConfigPathResolver.getBaseDirname();
   Util.setupSimpleEnv();
@@ -20,23 +21,20 @@ export const setupInstance = (serviceName, scriptPath): any => {
   }
   const name = ConfigPathResolver.getServiceName();
   const logger = Util.getLogger(`${name ? name : ""}`);
-  logger.info(`config loaded from [${process.env.MIQRO_DIRNAME}]`);
-  logger.info(`loading script from [${scriptPath}]!`);
-  /* tslint:disable */
-  /* eslint-disable  @typescript-eslint/no-var-requires */
-  const script = require(scriptPath);
-  /* tslint:enable */
+  logger.debug(`config loaded from [${process.env.MIQRO_DIRNAME}]`);
   return {
-    script,
     logger
   };
 };
 
-export const runInstance = async (logger, script): Promise<{ app: any; server: any }> => {
+export const runInstance = async (logger: Logger, scriptPath: string): Promise<{ app: any; server: any }> => {
   Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
   return new Promise(async (resolve, reject) => {
     try {
-      logger.info(`launching script`);
+      logger.debug(`loading script from [${scriptPath}]!`);
+      /* eslint-disable  @typescript-eslint/no-var-requires */
+      const script = require(scriptPath);
+      logger.debug(`launching script`);
       const app = express();
       let server = null;
       if (process.env.HTTPS_ENABLE === "true") {
