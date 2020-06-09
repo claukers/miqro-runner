@@ -4,10 +4,10 @@ import {ConfigPathResolver, Util} from "@miqro/core";
 import {Logger} from "winston";
 import {setupMiddleware} from "@miqro/handlers";
 import * as express from "express";
-import * as fs from "fs";
-import * as http from "http";
-import * as https from "https";
-import * as  path from "path";
+import {readFileSync} from "fs";
+import {createServer as httpCreateServer} from "http";
+import {createServer as httpsCreateServer} from "https";
+import {resolve as pathResolve} from "path";
 
 export const setupInstance = (serviceName: string): { logger: Logger } => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
@@ -40,12 +40,12 @@ export const runInstance = async (logger: Logger, scriptPath: string): Promise<{
       if (process.env.HTTPS_ENABLE === "true") {
         logger.info(`HTTPS enabled`);
         Util.checkEnvVariables(["HTTPS_KEY", "HTTPS_CERT", "HTTPS_CA"]);
-        const key = fs.readFileSync(path.resolve(process.env.HTTPS_KEY), "utf8");
-        const cert = fs.readFileSync(path.resolve(process.env.HTTPS_CERT), "utf8");
-        const ca = fs.readFileSync(path.resolve(process.env.HTTPS_CA), "utf8");
-        server = https.createServer({key, cert, ca}, app);
+        const key = readFileSync(pathResolve(process.env.HTTPS_KEY), "utf8");
+        const cert = readFileSync(pathResolve(process.env.HTTPS_CERT), "utf8");
+        const ca = readFileSync(pathResolve(process.env.HTTPS_CA), "utf8");
+        server = httpsCreateServer({key, cert, ca}, app);
       } else {
-        server = http.createServer(app);
+        server = httpCreateServer(app);
       }
       await script(await setupMiddleware(app, logger), server);
       const errorHandler = (err): void => {
