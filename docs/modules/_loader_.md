@@ -13,16 +13,16 @@
 
 ### `Const` runInstance
 
-▸ **runInstance**(`logger`: any, `script`: any): *Promise‹object›*
+▸ **runInstance**(`logger`: Logger, `scriptPath`: string): *Promise‹object›*
 
-*Defined in [src/loader.ts:35](https://github.com/claukers/miqro-runner/blob/e36bfec/src/loader.ts#L35)*
+*Defined in [src/loader.ts:30](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/loader.ts#L30)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`logger` | any |
-`script` | any |
+`logger` | Logger |
+`scriptPath` | string |
 
 **Returns:** *Promise‹object›*
 
@@ -30,15 +30,16 @@ ___
 
 ### `Const` setupInstance
 
-▸ **setupInstance**(`serviceName`: any, `scriptPath`: any): *any*
+▸ **setupInstance**(`serviceName`: string): *object*
 
-*Defined in [src/loader.ts:11](https://github.com/claukers/miqro-runner/blob/e36bfec/src/loader.ts#L11)*
+*Defined in [src/loader.ts:12](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/loader.ts#L12)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`serviceName` | any |
-`scriptPath` | any |
+`serviceName` | string |
 
-**Returns:** *any*
+**Returns:** *object*
+
+* **logger**: *Logger*

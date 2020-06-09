@@ -16,6 +16,7 @@
 * ["cli/watch-util"](modules/_cli_watch_util_.md)
 * ["index"](modules/_index_.md)
 * ["instance"](modules/_instance_.md)
+* ["instance-script"](modules/_instance_script_.md)
 * ["loader"](modules/_loader_.md)
 * ["miqro"](modules/_miqro_.md)
 * ["miqroscript"](modules/_miqroscript_.md)
