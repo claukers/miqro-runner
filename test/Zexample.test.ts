@@ -1,6 +1,7 @@
-import {describe, it/*, before, after*/} from 'mocha';
+import {describe, it} from 'mocha';
 import * as chai from 'chai';
 import * as path from 'path';
+import {Util} from "@miqro/core";
 // import * as rewiremock from 'rewiremock';
 
 process.env.NODE_ENV = "test";
@@ -35,6 +36,12 @@ describe('Zexample start', function () {
         mode: "simple"
       });
       await micro.start();
+
+      const result = await Util.request({url: "http://localhost:8080/hello", method: "get"});
+      chai.expect(result.status).to.be.equals(200);
+      chai.expect(result.data.result).to.be.equals("world");
+      await Util.request({url: "http://localhost:8080/hello", method: "get"});
+      await Util.request({url: "http://localhost:8080/hello", method: "get"});
       await micro.stop();
       delete process.env.MIQRO_DIRNAME;
     };
