@@ -1,7 +1,6 @@
 "use strict";
 
-import {ConfigPathResolver, Util} from "@miqro/core";
-import {Logger} from "winston";
+import {ConfigPathResolver, Logger, Util} from "@miqro/core";
 import {setupMiddleware} from "@miqro/handlers";
 import * as express from "express";
 import {readFileSync} from "fs";

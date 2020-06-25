@@ -2,7 +2,7 @@ import {EventEmitter} from "events";
 import {resolve} from "path";
 import {createClusterPool, createForkPool} from "script-pool";
 import {runInstance, setupInstance} from "./loader";
-import {Logger} from "winston";
+import {Logger} from "@miqro/core";
 
 const logger = console;
 

@@ -24,8 +24,8 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "@miqro/core": "^0.6.6",
-    "@miqro/handlers": "^0.6.2",
+    "@miqro/core": "https://github.com/claukers/miqro-core.git#develop",
+    "@miqro/handlers": "https://github.com/claukers/miqro-express.git#develop",
     "express": "^4.17.1",
     "script-pool": "^1.0.3"
   },
