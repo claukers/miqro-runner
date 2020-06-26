@@ -1,8 +1,9 @@
 import {EventEmitter} from "events";
 import {resolve} from "path";
-import {createClusterPool, createForkPool} from "script-pool";
 import {runInstance, setupInstance} from "./loader";
-import {Logger} from "@miqro/core";
+import {Logger, Util} from "@miqro/core";
+
+const scriptPoolModule = "script-pool";
 
 const logger = console;
 
@@ -81,6 +82,8 @@ export class Miqro extends EventEmitter {
     this.config = config;
     switch (config.mode) {
       case "cluster":
+        Util.checkModules([scriptPoolModule]);
+        const {createClusterPool} = require(scriptPoolModule);
         // noinspection SpellCheckingInspection
         this.pool = createClusterPool({
           min: config.nodes,
@@ -99,6 +102,8 @@ export class Miqro extends EventEmitter {
         if (config.nodes !== 1) {
           throw new Error(`${config.nodes} not supported in fork mode (try 1 or cluster mode)!`);
         }
+        Util.checkModules([scriptPoolModule]);
+        const {createForkPool} = require(scriptPoolModule);
         // noinspection SpellCheckingInspection
         this.pool = createForkPool({
           min: config.nodes,
