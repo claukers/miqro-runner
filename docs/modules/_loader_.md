@@ -4,6 +4,10 @@
 
 ## Index
 
+### Interfaces
+
+* [RunInstanceReturn](../interfaces/_loader_.runinstancereturn.md)
+
 ### Functions
 
 * [runInstance](_loader_.md#const-runinstance)
@@ -13,9 +17,9 @@
 
 ### `Const` runInstance
 
-▸ **runInstance**(`logger`: Logger, `scriptPath`: string): *Promise‹object›*
+▸ **runInstance**(`logger`: Logger, `scriptPath`: string): *Promise‹[RunInstanceReturn](../interfaces/_loader_.runinstancereturn.md)›*
 
-*Defined in [src/loader.ts:30](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/loader.ts#L30)*
+*Defined in [src/loader.ts:35](https://github.com/claukers/miqro-runner/blob/b9accee/src/loader.ts#L35)*
 
 **Parameters:**
 
@@ -24,7 +28,7 @@ Name | Type |
 `logger` | Logger |
 `scriptPath` | string |
 
-**Returns:** *Promise‹object›*
+**Returns:** *Promise‹[RunInstanceReturn](../interfaces/_loader_.runinstancereturn.md)›*
 
 ___
 
@@ -32,7 +36,7 @@ ___
 
 ▸ **setupInstance**(`serviceName`: string): *object*
 
-*Defined in [src/loader.ts:12](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/loader.ts#L12)*
+*Defined in [src/loader.ts:12](https://github.com/claukers/miqro-runner/blob/b9accee/src/loader.ts#L12)*
 
 **Parameters:**
 

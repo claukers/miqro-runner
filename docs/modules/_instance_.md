@@ -14,9 +14,9 @@
 
 ###  logger
 
-• **logger**: *Logger‹›*
+• **logger**: *Logger*
 
-*Defined in [src/instance.ts:6](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/instance.ts#L6)*
+*Defined in [src/instance.ts:6](https://github.com/claukers/miqro-runner/blob/b9accee/src/instance.ts#L6)*
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 • **scriptPath**: *string* = resolve(process.argv[process.argv.length - 1])
 
-*Defined in [src/instance.ts:5](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/instance.ts#L5)*
+*Defined in [src/instance.ts:5](https://github.com/claukers/miqro-runner/blob/b9accee/src/instance.ts#L5)*
 
 ___
 
@@ -32,4 +32,4 @@ ___
 
 • **serviceName**: *string* = process.argv[process.argv.length - 2]
 
-*Defined in [src/instance.ts:4](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/instance.ts#L4)*
+*Defined in [src/instance.ts:4](https://github.com/claukers/miqro-runner/blob/b9accee/src/instance.ts#L4)*

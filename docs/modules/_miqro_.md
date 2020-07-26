@@ -27,7 +27,7 @@
 
 Ƭ **MiqroStateType**: *"stopping" | "stopped" | "starting" | "started"*
 
-*Defined in [src/miqro.ts:11](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/miqro.ts#L11)*
+*Defined in [src/miqro.ts:11](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L11)*
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 Ƭ **ModeType**: *"cluster" | "fork" | "simple"*
 
-*Defined in [src/miqro.ts:9](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/miqro.ts#L9)*
+*Defined in [src/miqro.ts:9](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L9)*
 
 ## Variables
 
@@ -43,4 +43,4 @@ ___
 
 • **logger**: *Console* = console
 
-*Defined in [src/miqro.ts:7](https://github.com/claukers/miqro-runner/blob/ac4b2c9/src/miqro.ts#L7)*
+*Defined in [src/miqro.ts:7](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L7)*
