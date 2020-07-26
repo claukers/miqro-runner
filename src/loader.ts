@@ -2,13 +2,12 @@
 
 import {ConfigPathResolver, Logger, Util} from "@miqro/core";
 import {readFileSync} from "fs";
-import {createServer as httpCreateServer} from "http";
-import {createServer as httpsCreateServer} from "https";
+import {createServer as httpCreateServer, Server as HttpServer} from "http";
+import {createServer as httpsCreateServer, Server as HttpsServer} from "https";
 import {resolve as pathResolve} from "path";
-
-// noinspection SpellCheckingInspection
-const handlersModule = "@miqro/handlers";
-const expressModule = "express";
+import * as express from "express";
+import {Express} from "express";
+import {setupMiddleware} from "@miqro/handlers";
 
 export const setupInstance = (serviceName: string): { logger: Logger } => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
@@ -28,11 +27,13 @@ export const setupInstance = (serviceName: string): { logger: Logger } => {
   };
 };
 
-export const runInstance = async (logger: Logger, scriptPath: string): Promise<{ app: any; server: any }> => {
+export interface RunInstanceReturn {
+  app: Express;
+  server: HttpsServer | HttpServer
+}
+
+export const runInstance = async (logger: Logger, scriptPath: string): Promise<RunInstanceReturn> => {
   Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
-  Util.checkModules([expressModule, handlersModule]);
-  const express = require(expressModule);
-  const {setupMiddleware} = require(handlersModule);
   return new Promise(async (resolve, reject) => {
     try {
       logger.debug(`loading script from [${scriptPath}]!`);
