@@ -52,7 +52,8 @@ export const runInstance = async (logger: Logger, scriptPath: string): Promise<R
       } else {
         server = httpCreateServer(app);
       }
-      await script(await setupMiddleware(app, logger), server);
+      setupMiddleware(app, logger);
+      await script(app, server);
       const errorHandler = (err): void => {
         reject(err);
       };
