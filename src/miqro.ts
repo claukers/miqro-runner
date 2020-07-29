@@ -1,8 +1,9 @@
 import {EventEmitter} from "events";
 import {resolve} from "path";
 import {createClusterPool, createForkPool} from "script-pool";
-import {runInstance, setupInstance} from "./loader";
+import {runInstance, RunInstanceReturn, setupInstance} from "./loader";
 import {Logger} from "@miqro/core";
+import {Pool} from "generic-pool";
 
 const logger = console;
 
@@ -19,10 +20,10 @@ export interface MicroConfigInterface {
 
 // noinspection SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection
 export class Miqro extends EventEmitter {
-  protected instanceApp;
-  protected simpleInstance: { logger: Logger } = null;
-  private pool;
-  private restart = null;
+  protected instanceApp: RunInstanceReturn | undefined;
+  protected simpleInstance: { logger: Logger; } | undefined;
+  private pool: Pool<any> | undefined;
+  private restart: NodeJS.Timeout | undefined;
   private state: MiqroStateType = "stopped";
 
   constructor(protected config: MicroConfigInterface) {
@@ -62,7 +63,24 @@ export class Miqro extends EventEmitter {
   }
 
   protected async simpleStop(): Promise<void> {
-    this.instanceApp.server.close();
+    if (this.instanceApp) {
+      return new Promise((resolve, reject) => {
+        if (this.instanceApp) {
+          this.instanceApp.server.close((e?: Error) => {
+            if (e) {
+              reject(e);
+            } else {
+              resolve();
+            }
+          });
+        } else {
+          return Promise.reject(new Error("not running"));
+        }
+
+      });
+    } else {
+      return Promise.reject(new Error("not running"));
+    }
   }
 
   protected async simpleStart(): Promise<void> {
@@ -74,7 +92,7 @@ export class Miqro extends EventEmitter {
     return resolve(__dirname, "instance");
   }
 
-  private configure(config): void {
+  private configure(config: MicroConfigInterface): void {
     if (this.state !== "stopped") {
       throw new Error(`cannot configured if not stopped!`);
     }
@@ -129,39 +147,47 @@ export class Miqro extends EventEmitter {
       // noinspection SpellCheckingInspection
       throw new Error(`cannot setupAutostart if not started!`);
     }
-    const instances = [];
-    for (let node = 0; node < this.config.nodes; node++) {
-      const instance = await this.pool.acquire();
-      instances.push(instance);
-      instance.once("exit", (code) => {
-        logger.info(`pid ${instance.pid} died with code [${code}]`);
-        logger.info(`planning restart in 2000ms`);
-        clearTimeout(this.restart);
-        this.restart = setTimeout(async () => {
-          logger.info(`restarting dead workers`);
-          if (this.state === "started") {
-            // noinspection SpellCheckingInspection
-            await this.setupAutostartAndBroadcast();
-          } else {
-            logger.info(`restarting canceled because miqro not started`);
+    const instances: any[] = [];
+    if (this.config.nodes && this.pool) {
+      for (let node = 0; node < this.config.nodes; node++) {
+        const instance = await this.pool.acquire();
+        instances.push(instance);
+        instance.once("exit", (code: number) => {
+          logger.info(`pid ${instance.pid} died with code [${code}]`);
+          logger.info(`planning restart in 2000ms`);
+          if (this.restart) {
+            clearTimeout(this.restart);
           }
-        }, 2000);
-      });
-    }
-    // setup broadcast and release
-    for (const instance of instances) {
-      try {
-        instance.on("message", (msg) => {
-          for (const other of instances) {
-            if (other !== instance) {
-              other.send(msg);
+          this.restart = setTimeout(async () => {
+            logger.info(`restarting dead workers`);
+            if (this.state === "started") {
+              // noinspection SpellCheckingInspection
+              await this.setupAutostartAndBroadcast();
+            } else {
+              logger.info(`restarting canceled because miqro not started`);
             }
-          }
+          }, 2000);
         });
-      } catch (e) {
-        logger.error(e);
       }
-      await this.pool.release(instance);
+
+      // setup broadcast and release
+      for (const instance of instances) {
+        try {
+          instance.on("message", (msg: any) => {
+            for (const other of instances) {
+              if (other !== instance) {
+                other.send(msg);
+              }
+            }
+          });
+        } catch (e) {
+          logger.error(e);
+        }
+
+        await this.pool.release(instance);
+      }
+    } else {
+      return Promise.reject(new Error("cannot call setupAutostartAndBroadcast without a pool"));
     }
   }
 }

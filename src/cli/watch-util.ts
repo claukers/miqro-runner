@@ -1,6 +1,6 @@
-import {spawn} from "child_process";
+import {ChildProcessWithoutNullStreams, spawn} from "child_process";
 import {basename, dirname, extname, join, resolve} from "path";
-import {existsSync, readdirSync, statSync, watch} from "fs";
+import {existsSync, FSWatcher, readdirSync, statSync, watch} from "fs";
 import {startArgs} from "./startargs";
 
 const usage = `usage: miqro-runner watch [nodes=1] [mode=simple] <microservice.js>`;
@@ -9,14 +9,14 @@ const {nodes, mode, logger, service} = startArgs(usage);
 
 const serviceDirname = statSync(resolve(service)).isDirectory() ? resolve(service) : resolve(dirname(service));
 
-let proc = null;
+let proc: ChildProcessWithoutNullStreams | null;
 
-const watches = [];
+const watches: FSWatcher[] = [];
 const TIMEOUT = 5000;
 
-let restartTimeout = null;
+let restartTimeout: NodeJS.Timeout;
 
-const walkSync = (dir, list: string[] = []): string[] => {
+const walkSync = (dir: string, list: string[] = []): string[] => {
   readdirSync(dir).forEach(file => {
 
     list = statSync(join(dir, file)).isDirectory()
@@ -38,14 +38,12 @@ const watchTree = (dirname: string, cb: (event: string, filename: string) => voi
   }
 };
 
-const restart = (cmd: string, silent?): void => {
+const restart = (cmd: string, silent?: boolean): void => {
   if (!silent && restartTimeout === null) {
     logger.warn(`change detected restarting in ${TIMEOUT}ms`);
   }
   clearTimeout(restartTimeout);
-  restartTimeout = null;
   restartTimeout = setTimeout(async () => {
-    restartTimeout = null;
     if (!silent) {
       logger.warn("restarting");
     }

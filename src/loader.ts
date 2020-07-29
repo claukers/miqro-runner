@@ -5,8 +5,8 @@ import {readFileSync} from "fs";
 import {createServer as httpCreateServer, Server as HttpServer} from "http";
 import {createServer as httpsCreateServer, Server as HttpsServer} from "https";
 import {resolve as pathResolve} from "path";
-import * as express from "express";
 import {Express} from "express";
+import express from "express";
 import {setupMiddleware} from "@miqro/handlers";
 
 export const setupInstance = (serviceName: string): { logger: Logger } => {
@@ -16,7 +16,7 @@ export const setupInstance = (serviceName: string): { logger: Logger } => {
   Util.loadConfig();
   if (!ConfigPathResolver.getServiceName()) {
     if (serviceName) {
-      ConfigPathResolver.setServiceName(serviceName);
+      Util.setServiceName(serviceName);
     }
   }
   const name = ConfigPathResolver.getServiceName();
@@ -40,35 +40,39 @@ export const runInstance = async (logger: Logger, scriptPath: string): Promise<R
       /* eslint-disable  @typescript-eslint/no-var-requires */
       const script = require(scriptPath);
       logger.debug(`launching script`);
-      const app = express();
-      let server = null;
+      const app: Express = express();
+      let server: HttpServer | HttpsServer;
       if (process.env.HTTPS_ENABLE === "true") {
         logger.info(`HTTPS enabled`);
         Util.checkEnvVariables(["HTTPS_KEY", "HTTPS_CERT", "HTTPS_CA"]);
-        const key = readFileSync(pathResolve(process.env.HTTPS_KEY), "utf8");
-        const cert = readFileSync(pathResolve(process.env.HTTPS_CERT), "utf8");
-        const ca = readFileSync(pathResolve(process.env.HTTPS_CA), "utf8");
+        const key = readFileSync(pathResolve(process.env.HTTPS_KEY as string), "utf8");
+        const cert = readFileSync(pathResolve(process.env.HTTPS_CERT as string), "utf8");
+        const ca = readFileSync(pathResolve(process.env.HTTPS_CA as string), "utf8");
         server = httpsCreateServer({key, cert, ca}, app);
       } else {
         server = httpCreateServer(app);
       }
       setupMiddleware(app, logger);
       await script(app, server);
-      const errorHandler = (err): void => {
+      const errorHandler = (err: Error): void => {
         reject(err);
       };
       server.once("error", errorHandler);
       server.listen(process.env.PORT, () => {
         logger.info(`script started on [${process.env.PORT}]`);
-        server.removeListener("error", errorHandler);
+        if (server) {
+          server.removeListener("error", errorHandler);
+        }
         let cleaningUp = false;
         const cleanUp = (): void => {
           if (!cleaningUp) {
             logger.info("cleaning up");
-            server.once("close", async () => {
-              logger.info("clean up");
-            });
-            server.close();
+            if (server) {
+              server.once("close", async () => {
+                logger.info("clean up");
+              });
+              server.close();
+            }
           }
           cleaningUp = true;
         };
