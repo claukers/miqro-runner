@@ -19,7 +19,7 @@
 
 • **app**: *Express*
 
-*Defined in [src/loader.ts:31](https://github.com/claukers/miqro-runner/blob/b9accee/src/loader.ts#L31)*
+*Defined in [src/loader.ts:31](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/loader.ts#L31)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **server**: *HttpsServer | HttpServer*
 
-*Defined in [src/loader.ts:32](https://github.com/claukers/miqro-runner/blob/b9accee/src/loader.ts#L32)*
+*Defined in [src/loader.ts:32](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/loader.ts#L32)*

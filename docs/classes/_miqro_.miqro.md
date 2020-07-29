@@ -61,7 +61,7 @@
 
 *Overrides void*
 
-*Defined in [src/miqro.ts:26](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L26)*
+*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L27)*
 
 **Parameters:**
 
@@ -77,43 +77,39 @@ Name | Type |
 
 • **config**: *[MicroConfigInterface](../interfaces/_miqro_.microconfiginterface.md)*
 
-*Defined in [src/miqro.ts:28](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L28)*
+*Defined in [src/miqro.ts:29](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L29)*
 
 ___
 
 ### `Protected` instanceApp
 
-• **instanceApp**: *any*
+• **instanceApp**: *[RunInstanceReturn](../interfaces/_loader_.runinstancereturn.md) | undefined*
 
-*Defined in [src/miqro.ts:22](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L22)*
+*Defined in [src/miqro.ts:23](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L23)*
 
 ___
 
 ### `Private` pool
 
-• **pool**: *any*
+• **pool**: *Pool‹any› | undefined*
 
-*Defined in [src/miqro.ts:24](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L24)*
+*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L25)*
 
 ___
 
 ### `Private` restart
 
-• **restart**: *any* = null
+• **restart**: *Timeout | undefined*
 
-*Defined in [src/miqro.ts:25](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L25)*
+*Defined in [src/miqro.ts:26](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L26)*
 
 ___
 
 ### `Protected` simpleInstance
 
-• **simpleInstance**: *object* = null
+• **simpleInstance**: *object | undefined*
 
-*Defined in [src/miqro.ts:23](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L23)*
-
-#### Type declaration:
-
-* **logger**: *Logger*
+*Defined in [src/miqro.ts:24](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L24)*
 
 ___
 
@@ -121,7 +117,7 @@ ___
 
 • **state**: *[MiqroStateType](../modules/_miqro_.md#miqrostatetype)* = "stopped"
 
-*Defined in [src/miqro.ts:26](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L26)*
+*Defined in [src/miqro.ts:27](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L27)*
 
 ___
 
@@ -181,15 +177,15 @@ ___
 
 ### `Private` configure
 
-▸ **configure**(`config`: any): *void*
+▸ **configure**(`config`: [MicroConfigInterface](../interfaces/_miqro_.microconfiginterface.md)): *void*
 
-*Defined in [src/miqro.ts:77](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L77)*
+*Defined in [src/miqro.ts:95](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L95)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`config` | any |
+`config` | [MicroConfigInterface](../interfaces/_miqro_.microconfiginterface.md) |
 
 **Returns:** *void*
 
@@ -470,7 +466,7 @@ ___
 
 ▸ **resolveScriptPath**(): *string*
 
-*Defined in [src/miqro.ts:73](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L73)*
+*Defined in [src/miqro.ts:91](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L91)*
 
 **Returns:** *string*
 
@@ -498,7 +494,7 @@ ___
 
 ▸ **setupAutostartAndBroadcast**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:127](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L127)*
+*Defined in [src/miqro.ts:145](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L145)*
 
 **Returns:** *Promise‹void›*
 
@@ -508,7 +504,7 @@ ___
 
 ▸ **simpleStart**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:68](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L68)*
+*Defined in [src/miqro.ts:86](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L86)*
 
 **Returns:** *Promise‹void›*
 
@@ -518,7 +514,7 @@ ___
 
 ▸ **simpleStop**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:64](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L64)*
+*Defined in [src/miqro.ts:65](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L65)*
 
 **Returns:** *Promise‹void›*
 
@@ -528,7 +524,7 @@ ___
 
 ▸ **start**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:33](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L33)*
+*Defined in [src/miqro.ts:34](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L34)*
 
 **Returns:** *Promise‹void›*
 
@@ -538,7 +534,7 @@ ___
 
 ▸ **stop**(): *Promise‹void›*
 
-*Defined in [src/miqro.ts:48](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L48)*
+*Defined in [src/miqro.ts:49](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L49)*
 
 **Returns:** *Promise‹void›*
 

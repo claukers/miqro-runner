@@ -15,7 +15,7 @@
 
 • **scriptPath**: *string* = resolve(process.argv[process.argv.length - 1])
 
-*Defined in [src/instance-script.ts:5](https://github.com/claukers/miqro-runner/blob/b9accee/src/instance-script.ts#L5)*
+*Defined in [src/instance-script.ts:5](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/instance-script.ts#L5)*
 
 ___
 
@@ -23,4 +23,4 @@ ___
 
 • **serviceName**: *string* = process.argv[process.argv.length - 2]
 
-*Defined in [src/instance-script.ts:4](https://github.com/claukers/miqro-runner/blob/b9accee/src/instance-script.ts#L4)*
+*Defined in [src/instance-script.ts:4](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/instance-script.ts#L4)*

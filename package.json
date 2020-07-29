@@ -3,6 +3,7 @@
   "version": "0.7.0",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "miqro-runner": "dist/cli/cli.js"
   },

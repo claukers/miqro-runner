@@ -21,7 +21,7 @@
 
 • **mode**? : *[ModeType](../modules/_miqro_.md#modetype)*
 
-*Defined in [src/miqro.ts:16](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L16)*
+*Defined in [src/miqro.ts:17](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L17)*
 
 ___
 
@@ -29,15 +29,15 @@ ___
 
 • **name**: *string*
 
-*Defined in [src/miqro.ts:14](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L14)*
+*Defined in [src/miqro.ts:15](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L15)*
 
 ___
 
 ### `Optional` nodes
 
-• **nodes**? : *number*
+• **nodes**? : *undefined | number*
 
-*Defined in [src/miqro.ts:15](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L15)*
+*Defined in [src/miqro.ts:16](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L16)*
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 • **service**: *string*
 
-*Defined in [src/miqro.ts:17](https://github.com/claukers/miqro-runner/blob/b9accee/src/miqro.ts#L17)*
+*Defined in [src/miqro.ts:18](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/miqro.ts#L18)*

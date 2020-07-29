@@ -19,7 +19,7 @@
 
 ▸ **runInstance**(`logger`: Logger, `scriptPath`: string): *Promise‹[RunInstanceReturn](../interfaces/_loader_.runinstancereturn.md)›*
 
-*Defined in [src/loader.ts:35](https://github.com/claukers/miqro-runner/blob/b9accee/src/loader.ts#L35)*
+*Defined in [src/loader.ts:35](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/loader.ts#L35)*
 
 **Parameters:**
 
@@ -36,7 +36,7 @@ ___
 
 ▸ **setupInstance**(`serviceName`: string): *object*
 
-*Defined in [src/loader.ts:12](https://github.com/claukers/miqro-runner/blob/b9accee/src/loader.ts#L12)*
+*Defined in [src/loader.ts:12](https://github.com/claukers/miqro-runner/blob/a5c7dd4/src/loader.ts#L12)*
 
 **Parameters:**
 
