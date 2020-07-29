@@ -1,6 +1,6 @@
 import {describe, it} from 'mocha';
-import * as chai from 'chai';
-import * as path from 'path';
+import chai from 'chai';
+import path from 'path';
 import {Util} from "@miqro/core";
 // import * as rewiremock from 'rewiremock';
 
