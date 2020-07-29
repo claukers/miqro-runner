@@ -39,7 +39,3 @@ or
 or
 
 ```miqro-runner start-script service.js```
-
-### documentation
-
-[globals](docs/globals.md)

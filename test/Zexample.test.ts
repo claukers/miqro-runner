@@ -1,5 +1,5 @@
 import {describe, it} from 'mocha';
-import chai from 'chai';
+import {strictEqual} from "assert";
 import path from 'path';
 import {Util} from "@miqro/core";
 // import * as rewiremock from 'rewiremock';
@@ -10,21 +10,6 @@ const miqroCorePath = "@miqro/core";
 
 describe('Zexample start', function () {
   this.timeout(100000);
-  /*before((done) => {
-    rewiremock.default.disable();
-    rewiremock.default.enable();
-    rewiremock.default.disable();
-    rewiremock.default.enable();
-    const miqroCore = require(miqroCorePath);
-    const miqroExpress = require("@miqro/handlers");
-    rewiremock.default("@miqro/core").with(miqroCore);
-    rewiremock.default("@miqro/handlers").with(miqroExpress);
-    done();
-  });
-  after((done) => {
-    rewiremock.default.disable();
-    done();
-  });*/
   it('start the example in simple mode', (done) => {
     const test = async () => {
       const lib = require('../src/miqro');
@@ -37,8 +22,8 @@ describe('Zexample start', function () {
       });
       await micro.start();
       const result = await Util.request({url: "http://localhost:8080/hello", method: "get"});
-      chai.expect(result.status).to.be.equals(200);
-      chai.expect(result.data.result).to.be.equals("world");
+      strictEqual(result.status, 200);
+      strictEqual(result.data.result, "world");
       await Util.request({url: "http://localhost:8080/hello", method: "get"});
       await Util.request({url: "http://localhost:8080/hello", method: "get"});
       await micro.stop();
@@ -57,9 +42,9 @@ describe('Zexample start', function () {
           nodes: 1,
           mode: "unsoported" as any
         });
-        chai.expect(true).to.be.equals(false);
+        strictEqual(true, false);
       } catch (e) {
-        chai.expect(e.message).to.be.equals(`mode unsoported not supported!`);
+        strictEqual(e.message, `mode unsoported not supported!`);
       }
     };
     test().then(done).catch(done);
