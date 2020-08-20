@@ -6,7 +6,7 @@ import {createServer as httpCreateServer, Server as HttpServer} from "http";
 import {createServer as httpsCreateServer, Server as HttpsServer} from "https";
 import {resolve as pathResolve} from "path";
 import express, {Express} from "express";
-import {setupMiddleware} from "@miqro/handlers";
+import {APIRouter, ErrorHandler, setupMiddleware} from "@miqro/handlers";
 
 export const setupInstance = (serviceName: string): { logger: Logger } => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
@@ -31,13 +31,34 @@ export interface RunInstanceReturn {
   server: HttpsServer | HttpServer
 }
 
+export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceReturn> => {
+  return runModule(logger, async (app: Express) => {
+    app.use(APIRouter({
+      dirname: apiPath
+    }, logger));
+    app.use(ErrorHandler(logger));
+    return app;
+  });
+}
+
 export const runInstance = async (logger: Logger, scriptPath: string): Promise<RunInstanceReturn> => {
-  Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
   return new Promise(async (resolve, reject) => {
     try {
       logger.debug(`loading script from [${scriptPath}]!`);
       /* eslint-disable  @typescript-eslint/no-var-requires */
-      let script = require(scriptPath);
+      return await runModule(logger, require(scriptPath));
+    } catch (e) {
+      logger.error(e);
+      logger.error(e.stack);
+      reject(e);
+    }
+  });
+};
+
+export const runModule = async (logger: Logger, script: any): Promise<RunInstanceReturn> => {
+  Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
+  return new Promise(async (resolve, reject) => {
+    try {
       if ((script as any).default && (script as any).__esModule === true) {
         script = (script as any).default;
       }
