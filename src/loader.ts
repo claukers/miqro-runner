@@ -42,17 +42,9 @@ export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceRetu
 }
 
 export const runInstance = async (logger: Logger, scriptPath: string): Promise<RunInstanceReturn> => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      logger.debug(`loading script from [${scriptPath}]!`);
-      /* eslint-disable  @typescript-eslint/no-var-requires */
-      return await runModule(logger, require(scriptPath));
-    } catch (e) {
-      logger.error(e);
-      logger.error(e.stack);
-      reject(e);
-    }
-  });
+  logger.debug(`loading script from [${scriptPath}]!`);
+  /* eslint-disable  @typescript-eslint/no-var-requires */
+  return runModule(logger, require(scriptPath));
 };
 
 export const runModule = async (logger: Logger, script: unknown): Promise<RunInstanceReturn> => {
@@ -62,48 +54,52 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
       if ((script as any).default && (script as any).__esModule === true) {
         script = (script as any).default;
       }
-      logger.debug(`launching script`);
-      const app: Express = express();
-      let server: HttpServer | HttpsServer;
-      if (process.env.HTTPS_ENABLE === "true") {
-        logger.info(`HTTPS enabled`);
-        Util.checkEnvVariables(["HTTPS_KEY", "HTTPS_CERT", "HTTPS_CA"]);
-        const key = readFileSync(pathResolve(process.env.HTTPS_KEY as string), "utf8");
-        const cert = readFileSync(pathResolve(process.env.HTTPS_CERT as string), "utf8");
-        const ca = readFileSync(pathResolve(process.env.HTTPS_CA as string), "utf8");
-        server = httpsCreateServer({key, cert, ca}, app);
+      if (typeof script !== "function") {
+        reject(new Error(`script not a function`));
       } else {
-        server = httpCreateServer(app);
-      }
-      setupMiddleware(app, logger);
-      await script(app, server);
-      const errorHandler = (err: Error): void => {
-        reject(err);
-      };
-      server.once("error", errorHandler);
-      server.listen(process.env.PORT, () => {
-        logger.info(`script started on [${process.env.PORT}]`);
-        if (server) {
-          server.removeListener("error", errorHandler);
+        logger.debug(`launching script`);
+        const app: Express = express();
+        let server: HttpServer | HttpsServer;
+        if (process.env.HTTPS_ENABLE === "true") {
+          logger.info(`HTTPS enabled`);
+          Util.checkEnvVariables(["HTTPS_KEY", "HTTPS_CERT", "HTTPS_CA"]);
+          const key = readFileSync(pathResolve(process.env.HTTPS_KEY as string), "utf8");
+          const cert = readFileSync(pathResolve(process.env.HTTPS_CERT as string), "utf8");
+          const ca = readFileSync(pathResolve(process.env.HTTPS_CA as string), "utf8");
+          server = httpsCreateServer({key, cert, ca}, app);
+        } else {
+          server = httpCreateServer(app);
         }
-        let cleaningUp = false;
-        const cleanUp = (): void => {
-          if (!cleaningUp) {
-            logger.info("cleaning up");
-            if (server) {
-              server.once("close", async () => {
-                logger.info("clean up");
-              });
-              server.close();
-            }
-          }
-          cleaningUp = true;
+        setupMiddleware(app, logger);
+        await script(app, server);
+        const errorHandler = (err: Error): void => {
+          reject(err);
         };
-        logger.debug("setting up clean up handlers");
-        process.on("SIGINT", cleanUp);
-        process.on("SIGTERM", cleanUp);
-        resolve({app, server});
-      });
+        server.once("error", errorHandler);
+        server.listen(process.env.PORT, () => {
+          logger.info(`script started on [${process.env.PORT}]`);
+          if (server) {
+            server.removeListener("error", errorHandler);
+          }
+          let cleaningUp = false;
+          const cleanUp = (): void => {
+            if (!cleaningUp) {
+              logger.info("cleaning up");
+              if (server) {
+                server.once("close", async () => {
+                  logger.info("clean up");
+                });
+                server.close();
+              }
+            }
+            cleaningUp = true;
+          };
+          logger.debug("setting up clean up handlers");
+          process.on("SIGINT", cleanUp);
+          process.on("SIGTERM", cleanUp);
+          resolve({app, server});
+        });
+      }
     } catch (e) {
       logger.error(e);
       logger.error(e.stack);
