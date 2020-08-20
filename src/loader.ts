@@ -5,8 +5,7 @@ import {readFileSync} from "fs";
 import {createServer as httpCreateServer, Server as HttpServer} from "http";
 import {createServer as httpsCreateServer, Server as HttpsServer} from "https";
 import {resolve as pathResolve} from "path";
-import {Express} from "express";
-import express from "express";
+import express, {Express} from "express";
 import {setupMiddleware} from "@miqro/handlers";
 
 export const setupInstance = (serviceName: string): { logger: Logger } => {
@@ -38,7 +37,10 @@ export const runInstance = async (logger: Logger, scriptPath: string): Promise<R
     try {
       logger.debug(`loading script from [${scriptPath}]!`);
       /* eslint-disable  @typescript-eslint/no-var-requires */
-      const script = require(scriptPath);
+      let script = require(scriptPath);
+      if ((script as any).default && (script as any).__esModule === true) {
+        script = (script as any).default;
+      }
       logger.debug(`launching script`);
       const app: Express = express();
       let server: HttpServer | HttpsServer;
