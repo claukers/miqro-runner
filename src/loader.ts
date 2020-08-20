@@ -55,7 +55,7 @@ export const runInstance = async (logger: Logger, scriptPath: string): Promise<R
   });
 };
 
-export const runModule = async (logger: Logger, script: any): Promise<RunInstanceReturn> => {
+export const runModule = async (logger: Logger, script: unknown): Promise<RunInstanceReturn> => {
   Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
   return new Promise(async (resolve, reject) => {
     try {
