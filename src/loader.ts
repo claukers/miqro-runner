@@ -80,6 +80,9 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
           logger.info(`script started on [${process.env.PORT}]`);
           if (server) {
             server.removeListener("error", errorHandler);
+            server.on("error", (e) => {
+              logger.error(e);
+            });
           }
           let cleaningUp = false;
           const cleanUp = (): void => {
