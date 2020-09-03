@@ -25,7 +25,7 @@
   "dependencies": {
     "@miqro/core": "^0.8.2",
     "@miqro/handlers": "^0.8.1",
-    "script-pool": "^1.0.6",
+    "script-pool": "^1.0.8",
     "express": "^4.17.1"
   },
   "devDependencies": {
