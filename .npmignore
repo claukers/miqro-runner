@@ -9,6 +9,7 @@ example/
 src/
 test/
 tsconfig.json
+.eslintrc
 .editorconfig
 .nycrc
 .github/
