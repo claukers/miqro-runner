@@ -11,7 +11,7 @@ import {APIRouter, ErrorHandler, setupMiddleware} from "@miqro/handlers";
 export const setupInstance = (serviceName: string): { logger: Logger } => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
   process.env.MIQRO_DIRNAME = process.env.MIQRO_DIRNAME ? process.env.MIQRO_DIRNAME : ConfigPathResolver.getBaseDirname();
-  Util.setupSimpleEnv();
+  Util.setupNodeEnv();
   Util.loadConfig();
   if (!ConfigPathResolver.getServiceName()) {
     if (serviceName) {
