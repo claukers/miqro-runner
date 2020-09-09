@@ -5,9 +5,11 @@ import {startArgs} from "./startargs";
 
 const usage = `usage: miqro-runner watch [nodes=1] [mode=simple] <microservice.js>`;
 
-const {nodes, mode, logger, service} = startArgs(usage);
-
-const serviceDirname = statSync(resolve(service)).isDirectory() ? resolve(service) : resolve(dirname(service));
+let nodes: number;
+let mode: string;
+let logger: any;
+let service: string;
+let serviceDirname: string;
 
 let proc: ChildProcessWithoutNullStreams | null;
 
@@ -101,6 +103,12 @@ const restart = (cmd: string, silent?: boolean): void => {
 };
 
 export const startWatch = (cmd: string): void => {
+  const args = startArgs(usage);
+  nodes = args.nodes;
+  mode = args.mode;
+  logger = args.logger;
+  service = args.service;
+  serviceDirname = statSync(resolve(service)).isDirectory() ? resolve(service) : resolve(dirname(service));
   logger.log(`watching ${serviceDirname}`);
   setTimeout(() => {
     restart(cmd, true);

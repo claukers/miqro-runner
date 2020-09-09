@@ -1,6 +1,6 @@
 # @miqro/runner
 
-this module provide a simple cli for running nodejs apps in development.
+this module provides a simple cli for running nodejs apps in development.
 
 ```miqro-runner <command> [args..]```
 

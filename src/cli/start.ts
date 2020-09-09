@@ -1,17 +1,19 @@
 import {Miqro} from "../miqro";
 import {startArgs} from "./startargs";
 
-const usage = `usage: miqro start [nodes=1] [mode=simple] <microservice.js>`;
+export const main = () => {
+  const usage = `usage: miqro start [nodes=1] [mode=simple] <microservice.js>`;
 
-const {nodes, mode, name, logger, service} = startArgs(usage);
+  const {nodes, mode, name, logger, service} = startArgs(usage);
 
-const micro = new Miqro({
-  name,
-  service,
-  nodes,
-  mode: mode as any
-});
+  const micro = new Miqro({
+    name,
+    service,
+    nodes,
+    mode: mode as any
+  });
 
-micro.start().catch((e) => {
-  logger.error(e);
-});
+  micro.start().catch((e) => {
+    logger.error(e);
+  });
+}

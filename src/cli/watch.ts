@@ -1,3 +1,5 @@
 import {startWatch} from "./watch-util";
 
-startWatch("start");
+export const main = () => {
+  startWatch("start");
+}
