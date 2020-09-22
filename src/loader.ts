@@ -48,7 +48,7 @@ export const runInstance = async (logger: Logger, scriptPath: string): Promise<R
 };
 
 export const runModule = async (logger: Logger, script: unknown): Promise<RunInstanceReturn> => {
-  Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"]);
+  const [port, httpsEnable] = Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"], ["8080", "false"]);
   return new Promise(async (resolve, reject) => {
     try {
       if ((script as any).default && (script as any).__esModule === true) {
@@ -60,7 +60,7 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
         logger.debug(`launching script`);
         const app: Express = express();
         let server: HttpServer | HttpsServer;
-        if (process.env.HTTPS_ENABLE === "true") {
+        if (httpsEnable === "true") {
           logger.info(`HTTPS enabled`);
           Util.checkEnvVariables(["HTTPS_KEY", "HTTPS_CERT", "HTTPS_CA"]);
           const key = readFileSync(pathResolve(process.env.HTTPS_KEY as string), "utf8");
@@ -76,8 +76,8 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
           reject(err);
         };
         server.once("error", errorHandler);
-        server.listen(process.env.PORT, () => {
-          logger.info(`script started on [${process.env.PORT}]`);
+        server.listen(port, () => {
+          logger.info(`script started on [${port}]`);
           if (server) {
             server.removeListener("error", errorHandler);
             server.on("error", (e) => {
