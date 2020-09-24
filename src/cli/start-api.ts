@@ -1,7 +1,7 @@
 import {startArgs} from "./startargs";
 import {MiqroAPI} from "../miqroapi";
 
-export const main = () => {
+export const main = (): void => {
   const usage = `usage: miqro start-script [nodes=1] [mode=simple|fork|cluster] <script.js>`;
 
   const {nodes, mode, name, logger, service} = startArgs(usage);

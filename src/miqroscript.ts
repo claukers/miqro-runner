@@ -1,6 +1,6 @@
 import {resolve} from "path";
 import {Miqro} from "./miqro";
-import {runInstance, setupInstance} from "./loader";
+import {setupInstance} from "./loader";
 
 export class MiqroScript extends Miqro {
   protected async simpleStop(): Promise<void> {
