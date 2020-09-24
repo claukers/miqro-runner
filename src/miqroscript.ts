@@ -9,7 +9,7 @@ export class MiqroScript extends Miqro {
 
   protected async simpleStart(): Promise<void> {
     this.simpleInstance = setupInstance(this.config.name);
-    this.instanceApp = await runInstance(this.simpleInstance.logger, this.config.service);
+    require(this.config.service);
   }
 
   protected resolveScriptPath(): string {
