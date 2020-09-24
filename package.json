@@ -24,7 +24,7 @@
   "author": "claukers",
   "license": "ISC",
   "dependencies": {
-    "@miqro/core": "^0.8.8",
+    "@miqro/core": "^0.8.9",
     "@miqro/handlers": "^0.8.6",
     "express": "^4.17.1",
     "script-pool": "^1.0.8"
