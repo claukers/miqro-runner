@@ -59,7 +59,7 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
       } else {
         logger.debug(`launching script`);
         const app: Express = express();
-        let server: HttpServer | HttpsServer;
+        let server: HttpServer | HttpsServer | null;
         if (httpsEnable === "true") {
           logger.info(`HTTPS enabled`);
           Util.checkEnvVariables(["HTTPS_KEY", "HTTPS_CERT", "HTTPS_CA"]);
@@ -78,29 +78,7 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
         server.once("error", errorHandler);
         server.listen(port, () => {
           logger.info(`script started on [${port}]`);
-          if (server) {
-            server.removeListener("error", errorHandler);
-            server.on("error", (e) => {
-              logger.error(e);
-            });
-          }
-          let cleaningUp = false;
-          const cleanUp = (): void => {
-            if (!cleaningUp) {
-              logger.info("cleaning up");
-              if (server) {
-                server.once("close", async () => {
-                  logger.info("clean up");
-                });
-                server.close();
-              }
-            }
-            cleaningUp = true;
-          };
-          logger.debug("setting up clean up handlers");
-          process.on("SIGINT", cleanUp);
-          process.on("SIGTERM", cleanUp);
-          resolve({app, server});
+          resolve({app, server: server as HttpServer});
         });
       }
     } catch (e) {

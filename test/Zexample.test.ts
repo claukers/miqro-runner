@@ -9,7 +9,7 @@ process.env.NODE_ENV = "test";
 const miqroCorePath = "@miqro/core";
 
 describe('Zexample start', function () {
-  this.timeout(100000);
+  this.timeout(10000000);
   it('start the example in simple mode', (done) => {
     const test = async () => {
       const lib = require('../src/miqro');
@@ -27,6 +27,13 @@ describe('Zexample start', function () {
       await Util.request({url: "http://localhost:8080/hello", method: "get"});
       await Util.request({url: "http://localhost:8080/hello", method: "get"});
       await micro.stop();
+      try {
+        await Util.request({url: "http://localhost:8080/hello", method: "get"});
+        strictEqual(true, false);
+      } catch (e) {
+        strictEqual(e.message, "connect ECONNREFUSED 127.0.0.1:8080");
+      }
+
       delete process.env.MIQRO_DIRNAME;
     };
     test().then(done).catch(done);
