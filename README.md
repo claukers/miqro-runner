@@ -2,10 +2,10 @@
 
 this module provides a simple cli for running nodejs apps in development.
 
-```miqro-runner <command> [args..]```
+```npx miqro runner:<command> [args..]```
 
 ```
-usage: miqro-runner <command> [args]
+usage: npx miqro runner:<command> [args]
 Available commands:
 	start		starts a microservice
 	start-script	starts a script
@@ -16,26 +16,26 @@ Available commands:
 
 ##### watch mode
 
-```miqro-runner watch service.js```
+```npx miqro runner:watch service.js```
 
 or
 
-```miqro-runner watch-script service.js```
+```npx miqro runner:watch-script service.js```
 
 ##### cluster mode
 
 in ***cluster mode*** the app will be ***restarted*** if it crashes. for stopping the app send a ```SIGINT``` or similar signal to the process or see the **Miqro::stop(...)** method if created by the API.
 
-```miqro-runner start <CLUSTER_COUNT> cluster service.js```
+```npx miqro runner:start <CLUSTER_COUNT> cluster service.js```
 
 or
 
-```miqro-runner start-script <CLUSTER_COUNT> cluster service.js```
+```npx miqro runner:start-script <CLUSTER_COUNT> cluster service.js```
 
 ##### simple mode
 
-```miqro-runner start service.js```
+```npx miqro runner:start service.js```
 
 or
 
-```miqro-runner start-script service.js```
+```npx miqro runner:start-script service.js```
