@@ -18,4 +18,4 @@ CLIUtil.cliFlow({
   ["watch-script"]: {cb: watchScript, description: "starts a script in watch mode on the script dir"},
   ["watch-api"]: {cb: watchApi, description: "starts an apirouter on a directory in watch mode on the dir"},
   version: {cb: version, description: "\tprints miqro-runner version."}
-}, "miqro-runner", console);
+}, "npx miqro runner:<cmd> [args]", console);

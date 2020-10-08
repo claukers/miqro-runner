@@ -3,8 +3,6 @@ import {basename, dirname, extname, join, resolve} from "path";
 import {existsSync, FSWatcher, readdirSync, statSync, watch} from "fs";
 import {startArgs} from "./startargs";
 
-const usage = `usage: miqro-runner watch [nodes=1] [mode=simple] <microservice.js>`;
-
 let nodes: number;
 let mode: string;
 let logger: any;
@@ -102,7 +100,7 @@ const restart = (cmd: string, silent?: boolean): void => {
   }, silent ? 0 : TIMEOUT);
 };
 
-export const startWatch = (cmd: string): void => {
+export const startWatch = (cmd: string, usage: string): void => {
   const args = startArgs(usage);
   nodes = args.nodes;
   mode = args.mode;
