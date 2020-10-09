@@ -2,7 +2,7 @@ import {Miqro} from "../miqro";
 import {startArgs} from "./startargs";
 
 export const main = (): void => {
-  const usage = `usage: npx miqro runner:start [nodes=1] [mode=simple] <microservice.js>`;
+  const usage = `arguments: [nodes=1] [mode=simple] <microservice.js>`;
 
   const {nodes, mode, name, logger, service} = startArgs(usage);
 
