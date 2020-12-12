@@ -30,7 +30,7 @@ export const setupInstance = (serviceName: string): { logger: Logger } => {
 export interface RunInstanceReturn {
   app: Express;
   server: HttpsServer | HttpServer
-};
+}
 
 export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceReturn> => {
   return runModule(logger, async (app: Express) => {
