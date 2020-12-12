@@ -1,6 +1,6 @@
 "use strict";
 
-import {ConfigPathResolver, Logger, Util} from "@miqro/core";
+import {ConfigPathResolver, initLoggerFactory, Logger, Util} from "@miqro/core";
 import {readFileSync} from "fs";
 import {createServer as httpCreateServer, Server as HttpServer} from "http";
 import {createServer as httpsCreateServer, Server as HttpsServer} from "https";
@@ -18,6 +18,7 @@ export const setupInstance = (serviceName: string): { logger: Logger } => {
       Util.setServiceName(serviceName);
     }
   }
+  initLoggerFactory();
   const name = ConfigPathResolver.getServiceName();
   const logger = Util.getLogger(`${name ? name : ""}`);
   logger.debug(`config loaded from [${process.env.MIQRO_DIRNAME}]`);
@@ -29,7 +30,7 @@ export const setupInstance = (serviceName: string): { logger: Logger } => {
 export interface RunInstanceReturn {
   app: Express;
   server: HttpsServer | HttpServer
-}
+};
 
 export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceReturn> => {
   return runModule(logger, async (app: Express) => {
@@ -39,7 +40,7 @@ export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceRetu
     app.use(ErrorHandler(logger));
     return app;
   });
-}
+};
 
 export const runInstance = async (logger: Logger, scriptPath: string): Promise<RunInstanceReturn> => {
   logger.debug(`loading script from [${scriptPath}]!`);
