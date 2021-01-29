@@ -1,3 +1,3 @@
 # @miqro/runner
 
-this module provides instagration with starting **express** apps.
+this module provides some helpers for starting **express** apps.
