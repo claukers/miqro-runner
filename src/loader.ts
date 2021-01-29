@@ -1,12 +1,12 @@
 "use strict";
 
-import {ConfigPathResolver, initLoggerFactory, Logger, Util} from "@miqro/core";
-import {readFileSync} from "fs";
-import {createServer as httpCreateServer, Server as HttpServer} from "http";
-import {createServer as httpsCreateServer, Server as HttpsServer} from "https";
-import {resolve as pathResolve} from "path";
-import express, {Express} from "express";
-import {APIRouter, ErrorHandler, setupMiddleware} from "@miqro/handlers";
+import { ConfigPathResolver, initLoggerFactory, Logger, Util } from "@miqro/core";
+import { readFileSync } from "fs";
+import { createServer as httpCreateServer, Server as HttpServer } from "http";
+import { createServer as httpsCreateServer, Server as HttpsServer } from "https";
+import { resolve as pathResolve } from "path";
+import express, { Express } from "express";
+import { APIRouter, ErrorHandler, setupMiddleware } from "@miqro/handlers";
 
 export const setupInstance = (serviceName: string): { logger: Logger } => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
@@ -37,7 +37,7 @@ export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceRetu
     app.use(APIRouter({
       dirname: apiPath
     }, logger));
-    app.use(ErrorHandler(logger));
+    app.use(ErrorHandler(undefined, logger));
     return app;
   });
 };
@@ -67,7 +67,7 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
           const key = readFileSync(pathResolve(process.env.HTTPS_KEY as string), "utf8");
           const cert = readFileSync(pathResolve(process.env.HTTPS_CERT as string), "utf8");
           const ca = readFileSync(pathResolve(process.env.HTTPS_CA as string), "utf8");
-          server = httpsCreateServer({key, cert, ca}, app);
+          server = httpsCreateServer({ key, cert, ca }, app);
         } else {
           server = httpCreateServer(app);
         }
@@ -79,7 +79,7 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
         server.once("error", errorHandler);
         server.listen(port, () => {
           logger.info(`script started on [${port}]`);
-          resolve({app, server: server as HttpServer});
+          resolve({ app, server: server as HttpServer });
         });
       }
     } catch (e) {

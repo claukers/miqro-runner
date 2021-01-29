@@ -12,7 +12,7 @@ describe('Zexample start', function () {
   this.timeout(10000000);
   it('start the example in simple mode', (done) => {
     const test = async () => {
-      const lib = require('../src/miqro');
+      const lib = require('../src');
       process.env.MIQRO_DIRNAME = path.resolve(__dirname, '..', 'example');
       const micro = new lib.Miqro({
         name: "Micro 1",
@@ -42,7 +42,7 @@ describe('Zexample start', function () {
   it('start the example in unsupported mode', (done) => {
     const test = async () => {
       try {
-        const lib = require('../src/miqro');
+        const lib = require('../src');
         const micro = new lib.Miqro({
           name: "Micro 1",
           service: path.resolve(__dirname, '..', 'example', 'service'),
