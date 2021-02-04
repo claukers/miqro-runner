@@ -1,11 +1,13 @@
 "use strict";
 
-import { ConfigPathResolver, initLoggerFactory, Logger, Util } from "@miqro/core";
+import { ConfigPathResolver, FeatureToggle, initLoggerFactory, Logger, Util } from "@miqro/core";
 import { readFileSync } from "fs";
 import { createServer as httpCreateServer, Server as HttpServer } from "http";
 import { createServer as httpsCreateServer, Server as HttpsServer } from "https";
 import { resolve as pathResolve } from "path";
 import express, { Express } from "express";
+import { AuditErrorHandler, AuditHandler } from "@miqro/modelhandlers";
+import { Database } from "@miqro/database";
 import { APIRouter, ErrorHandler, setupMiddleware } from "@miqro/handlers";
 
 export const setupInstance = (serviceName: string): { logger: Logger } => {
@@ -34,9 +36,15 @@ export interface RunInstanceReturn {
 
 export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceReturn> => {
   return runModule(logger, async (app: Express) => {
+    if (FeatureToggle.isFeatureEnabled("AUDIT", false)) {
+      app.use(AuditHandler("audit", Database.getInstance(), logger));
+    }
     app.use(APIRouter({
       dirname: apiPath
     }, logger));
+    if (FeatureToggle.isFeatureEnabled("AUDIT", false)) {
+      app.use(AuditErrorHandler(logger));
+    }
     app.use(ErrorHandler(undefined, logger));
     return app;
   });

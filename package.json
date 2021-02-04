@@ -21,7 +21,9 @@
   "license": "ISC",
   "dependencies": {
     "@miqro/core": "^0.9.19",
+    "@miqro/database": "^0.9.10",
     "@miqro/handlers": "^0.9.15",
+    "@miqro/modelhandlers": "^0.9.38",
     "express": "^4.17.1",
     "script-pool": "^1.0.9"
   },
