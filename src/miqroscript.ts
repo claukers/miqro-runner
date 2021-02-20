@@ -1,6 +1,6 @@
-import {resolve} from "path";
-import {Miqro} from "./miqro";
-import {setupInstance} from "./loader";
+import { resolve } from "path";
+import { setupInstance } from "./loader";
+import { Miqro } from "./miqro";
 
 export class MiqroScript extends Miqro {
   protected async simpleStop(): Promise<void> {
@@ -8,7 +8,7 @@ export class MiqroScript extends Miqro {
   }
 
   protected async simpleStart(): Promise<void> {
-    this.simpleInstance = setupInstance(this.config.name);
+    setupInstance(this.config.name);
     require(this.config.service);
   }
 

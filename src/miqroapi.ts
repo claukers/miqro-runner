@@ -1,11 +1,10 @@
-import {resolve} from "path";
-import {Miqro} from "./miqro";
-import {runAPI, setupInstance} from "./loader";
+import { resolve } from "path";
+import { Miqro } from "./miqro";
+import { runAPI } from "./loader";
 
 export class MiqroAPI extends Miqro {
   protected async simpleStart(): Promise<void> {
-    this.simpleInstance = setupInstance(this.config.name);
-    this.instanceApp = await runAPI(this.simpleInstance.logger, this.config.service);
+    this.server = await runAPI(this.config.service, this.config.name);
   }
 
   protected resolveScriptPath(): string {

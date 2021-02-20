@@ -1,9 +1,8 @@
-import {EventEmitter} from "events";
-import {resolve} from "path";
-import {createClusterPool, createForkPool} from "script-pool";
-import {runInstance, RunInstanceReturn, setupInstance} from "./loader";
-import {Logger} from "@miqro/core";
-import {Pool} from "generic-pool";
+import { EventEmitter } from "events";
+import { resolve } from "path";
+import { createClusterPool, createForkPool } from "script-pool";
+import { runScript, Server } from "./loader";
+import { Pool } from "generic-pool";
 
 const logger = console;
 
@@ -20,8 +19,7 @@ export interface MicroConfigInterface {
 
 // noinspection SpellCheckingInspection,SpellCheckingInspection,SpellCheckingInspection
 export class Miqro extends EventEmitter {
-  protected instanceApp: RunInstanceReturn | undefined;
-  protected simpleInstance: { logger: Logger; } | undefined;
+  protected server: Server | undefined;
   private pool: Pool<any> | undefined;
   private restart: NodeJS.Timeout | undefined;
   private state: MiqroStateType = "stopped";
@@ -56,17 +54,17 @@ export class Miqro extends EventEmitter {
       await this.pool.clear();
       this.state = "stopped";
       this.configure(this.config);
-    } else if (this.instanceApp) {
+    } else if (this.server) {
       await this.simpleStop();
       this.state = "stopped";
     }
   }
 
   protected async simpleStop(): Promise<void> {
-    if (this.instanceApp) {
+    if (this.server) {
       return new Promise((resolve, reject) => {
-        if (this.instanceApp) {
-          this.instanceApp.server.close((e?: Error) => {
+        if (this.server) {
+          this.server.server.close((e?: Error) => {
             if (e) {
               reject(e);
             } else {
@@ -84,8 +82,7 @@ export class Miqro extends EventEmitter {
   }
 
   protected async simpleStart(): Promise<void> {
-    this.simpleInstance = setupInstance(this.config.name);
-    this.instanceApp = await runInstance(this.simpleInstance.logger, this.config.service);
+    this.server = await runScript(this.config.service, this.config.name);
   }
 
   protected resolveScriptPath(): string {
