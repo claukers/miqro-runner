@@ -10,7 +10,7 @@ import { AuditErrorHandler, AuditHandler } from "@miqro/modelhandlers";
 import { Database } from "@miqro/database";
 import { APIRouter, ErrorHandler, setupMiddleware } from "@miqro/handlers";
 
-export const setupInstance = (serviceName: string): { logger: Logger } => {
+export const setupInstance = (serviceName?: string): Logger => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
   process.env.MIQRO_DIRNAME = process.env.MIQRO_DIRNAME ? process.env.MIQRO_DIRNAME : ConfigPathResolver.getBaseDirname();
   Util.setupNodeEnv();
@@ -24,18 +24,17 @@ export const setupInstance = (serviceName: string): { logger: Logger } => {
   const name = ConfigPathResolver.getServiceName();
   const logger = Util.getLogger(`${name ? name : ""}`);
   logger.debug(`config loaded from [${process.env.MIQRO_DIRNAME}]`);
-  return {
-    logger
-  };
+  return logger;
 };
 
-export interface RunInstanceReturn {
+export interface Server {
   app: Express;
-  server: HttpsServer | HttpServer
+  server: HttpsServer | HttpServer;
+  logger: Logger;
 }
 
-export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceReturn> => {
-  return runModule(logger, async (app: Express) => {
+export const runAPI = (apiPath: string, serviceName?: string): Promise<Server> => {
+  return runServer(async (app, server, logger) => {
     if (FeatureToggle.isFeatureEnabled("AUDIT", false)) {
       app.use(AuditHandler("audit", Database.getInstance(), logger));
     }
@@ -46,23 +45,29 @@ export const runAPI = (logger: Logger, apiPath: string): Promise<RunInstanceRetu
       app.use(AuditErrorHandler(logger));
     }
     app.use(ErrorHandler(undefined, logger));
-    return app;
-  });
+  }, serviceName);
 };
 
-export const runInstance = async (logger: Logger, scriptPath: string): Promise<RunInstanceReturn> => {
-  logger.debug(`loading script from [${scriptPath}]!`);
+export const runScript = async (scriptPath: string, serviceName?: string): Promise<Server> => {
   /* eslint-disable  @typescript-eslint/no-var-requires */
-  return runModule(logger, require(scriptPath));
+  let script = require(scriptPath);
+  if ((script as any).default && (script as any).__esModule === true) {
+    script = (script as any).default;
+  }
+  return runServer(script, serviceName);
 };
 
-export const runModule = async (logger: Logger, script: unknown): Promise<RunInstanceReturn> => {
+export type ServerFunction = (
+  app: Express,
+  server: HttpsServer | HttpServer,
+  logger: Logger
+) => Promise<void>;
+
+export const runServer = async (script: ServerFunction, serviceName?: string): Promise<Server> => {
   const [port, httpsEnable] = Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"], ["8080", "false"]);
   return new Promise(async (resolve, reject) => {
+    const logger = setupInstance(serviceName);
     try {
-      if ((script as any).default && (script as any).__esModule === true) {
-        script = (script as any).default;
-      }
       if (typeof script !== "function") {
         reject(new Error(`script not a function`));
       } else {
@@ -80,14 +85,14 @@ export const runModule = async (logger: Logger, script: unknown): Promise<RunIns
           server = httpCreateServer(app);
         }
         setupMiddleware(app, logger);
-        await script(app, server);
+        await script(app, server, logger);
         const errorHandler = (err: Error): void => {
           reject(err);
         };
         server.once("error", errorHandler);
         server.listen(port, () => {
           logger.info(`script started on [${port}]`);
-          resolve({ app, server: server as HttpServer });
+          resolve({ app, server: server as HttpServer, logger });
         });
       }
     } catch (e) {
