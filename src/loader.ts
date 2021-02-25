@@ -5,10 +5,9 @@ import { readFileSync } from "fs";
 import { createServer as httpCreateServer, Server as HttpServer } from "http";
 import { createServer as httpsCreateServer, Server as HttpsServer } from "https";
 import { resolve as pathResolve } from "path";
-import express, { Express } from "express";
 import { AuditErrorHandler, AuditHandler } from "@miqro/modelhandlers";
 import { Database } from "@miqro/database";
-import { APIRouter, ErrorHandler, setupMiddleware } from "@miqro/handlers";
+import { APIRouter, App, midleware } from "@miqro/handlers";
 
 export const setupInstance = (serviceName?: string): Logger => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
@@ -28,7 +27,7 @@ export const setupInstance = (serviceName?: string): Logger => {
 };
 
 export interface Server {
-  app: Express;
+  app: App;
   server: HttpsServer | HttpServer;
   logger: Logger;
 }
@@ -42,9 +41,8 @@ export const runAPI = (apiPath: string, serviceName?: string): Promise<Server> =
       dirname: apiPath
     }, logger));
     if (FeatureToggle.isFeatureEnabled("AUDIT", false)) {
-      app.use(AuditErrorHandler(logger));
+      app.catch(AuditErrorHandler());
     }
-    app.use(ErrorHandler(undefined, logger));
   }, serviceName);
 };
 
@@ -58,7 +56,7 @@ export const runScript = async (scriptPath: string, serviceName?: string): Promi
 };
 
 export type ServerFunction = (
-  app: Express,
+  app: App,
   server: HttpsServer | HttpServer,
   logger: Logger
 ) => Promise<void>;
@@ -72,7 +70,7 @@ export const runServer = async (script: ServerFunction, serviceName?: string): P
         reject(new Error(`script not a function`));
       } else {
         logger.debug(`launching script`);
-        const app: Express = express();
+        const app = new App();
         let server: HttpServer | HttpsServer | null;
         if (httpsEnable === "true") {
           logger.info(`HTTPS enabled`);
@@ -80,11 +78,11 @@ export const runServer = async (script: ServerFunction, serviceName?: string): P
           const key = readFileSync(pathResolve(process.env.HTTPS_KEY as string), "utf8");
           const cert = readFileSync(pathResolve(process.env.HTTPS_CERT as string), "utf8");
           const ca = readFileSync(pathResolve(process.env.HTTPS_CA as string), "utf8");
-          server = httpsCreateServer({ key, cert, ca }, app);
+          server = httpsCreateServer({ key, cert, ca }, app.listener);
         } else {
-          server = httpCreateServer(app);
+          server = httpCreateServer(app.listener);
         }
-        setupMiddleware(app, logger);
+        app.use(midleware());
         await script(app, server, logger);
         const errorHandler = (err: Error): void => {
           reject(err);

@@ -14,10 +14,10 @@ const myFunction = () => {
 
 module.exports = async (app) => {
   const somelogger = Util.getLogger("some logger");
-  app.use("/myFunction", Handler(myFunction), ResponseHandler());
-  app.use("/hello", Handler(async () => {
+  app.get("/myFunction", [myFunction, ResponseHandler()]);
+  app.get("/hello", [async () => {
     return "world";
-  }), ResponseHandler());
+  }, ResponseHandler()]);
   somelogger.warn("me too");
   return app;
 };
