@@ -7,7 +7,7 @@ import { createServer as httpsCreateServer, Server as HttpsServer } from "https"
 import { resolve as pathResolve } from "path";
 import { AuditErrorHandler, AuditHandler } from "@miqro/modelhandlers";
 import { Database } from "@miqro/database";
-import { APIRouter, App, midleware } from "@miqro/handlers";
+import { APIRouter, App, middleware } from "@miqro/handlers";
 
 export const setupInstance = (serviceName?: string): Logger => {
   // Util.setupInstanceEnv(serviceName, scriptPath);
@@ -82,7 +82,7 @@ export const runServer = async (script: ServerFunction, serviceName?: string): P
         } else {
           server = httpCreateServer(app.listener);
         }
-        app.use(midleware());
+        app.use(middleware());
         await script(app, server, logger);
         const errorHandler = (err: Error): void => {
           reject(err);
