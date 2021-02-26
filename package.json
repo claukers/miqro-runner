@@ -22,8 +22,8 @@
   "dependencies": {
     "@miqro/core": "^0.9.23",
     "@miqro/database": "^0.9.12",
-    "@miqro/handlers": "^1.0.4",
-    "@miqro/modelhandlers": "^1.0.2",
+    "@miqro/handlers": "^1.0.15",
+    "@miqro/modelhandlers": "^1.0.3",
     "script-pool": "^1.0.9"
   },
   "devDependencies": {
