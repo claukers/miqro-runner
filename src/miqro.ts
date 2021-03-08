@@ -2,7 +2,9 @@ import { EventEmitter } from "events";
 import { resolve } from "path";
 import { runScript, Server } from "./loader";
 import { fork, ChildProcess } from "child_process";
-import { rejects } from "node:assert";
+import { rejects } from "assert";
+import { existsSync } from "fs";
+import { ConfigFileNotFoundError } from "@miqro/core";
 
 const logger = console;
 
@@ -141,6 +143,9 @@ export class Miqro extends EventEmitter {
   private configure(config: MicroConfigInterface): void {
     if (this.state !== "stopped") {
       throw new Error(`cannot configured if not stopped!`);
+    }
+    if (!existsSync(config.service)) {
+      throw new ConfigFileNotFoundError(`config.service doesnt exists!`);
     }
     switch (config.mode) {
       case "cluster":
