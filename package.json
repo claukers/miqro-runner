@@ -23,12 +23,10 @@
     "@miqro/core": "^0.9.28",
     "@miqro/database": "^0.9.12",
     "@miqro/handlers": "^1.0.29",
-    "@miqro/modelhandlers": "^1.0.6",
-    "script-pool": "^1.0.9"
+    "@miqro/modelhandlers": "^1.0.6"
   },
   "devDependencies": {
     "@types/cookie": "^0.4.0",
-    "@types/generic-pool": "^3.1.9",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.31",
     "@types/validator": "^13.1.3",
