@@ -144,9 +144,6 @@ export class Miqro extends EventEmitter {
     if (this.state !== "stopped") {
       throw new Error(`cannot configured if not stopped!`);
     }
-    if (!existsSync(config.service)) {
-      throw new ConfigFileNotFoundError(`config.service doesnt exists!`);
-    }
     switch (config.mode) {
       case "cluster":
         break;
