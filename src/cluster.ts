@@ -32,13 +32,8 @@ const forkAutoRestart = (): void => {
 }
 
 if (cluster.isMaster) {
-  if (!existsSync(path)) {
-    logger.error(`cannot find script ${path}`);
-    process.exit(50);
-  } else {
-    for (let i = 0; i < count; i++) {
-      forkAutoRestart();
-    }
+  for (let i = 0; i < count; i++) {
+    forkAutoRestart();
   }
 } else {
 
