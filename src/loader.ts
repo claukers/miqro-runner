@@ -33,6 +33,7 @@ export interface Server {
 }
 
 export const runAPI = (apiPath: string, serviceName?: string): Promise<Server> => {
+  const logger = setupInstance(serviceName);
   return runServer(async (app, server, logger) => {
     if (FeatureToggle.isFeatureEnabled("AUDIT", false)) {
       app.use(AuditHandler("audit", Database.getInstance(), logger));
@@ -43,16 +44,17 @@ export const runAPI = (apiPath: string, serviceName?: string): Promise<Server> =
     if (FeatureToggle.isFeatureEnabled("AUDIT", false)) {
       app.catch(AuditErrorHandler());
     }
-  }, serviceName);
+  }, logger);
 };
 
 export const runScript = async (scriptPath: string, serviceName?: string): Promise<Server> => {
+  const logger = setupInstance(serviceName);
   /* eslint-disable  @typescript-eslint/no-var-requires */
   let script = require(scriptPath);
   if ((script as any).default && (script as any).__esModule === true) {
     script = (script as any).default;
   }
-  return runServer(script, serviceName);
+  return runServer(script, logger);
 };
 
 export type ServerFunction = (
@@ -61,10 +63,9 @@ export type ServerFunction = (
   logger: Logger
 ) => Promise<void>;
 
-export const runServer = async (script: ServerFunction, serviceName?: string): Promise<Server> => {
+export const runServer = async (script: ServerFunction, logger: Logger): Promise<Server> => {
   const [port, httpsEnable] = Util.checkEnvVariables(["PORT", "HTTPS_ENABLE"], ["8080", "false"]);
   return new Promise(async (resolve, reject) => {
-    const logger = setupInstance(serviceName);
     try {
       if (typeof script !== "function") {
         reject(new Error(`script not a function`));
