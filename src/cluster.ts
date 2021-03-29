@@ -2,7 +2,6 @@ import { checkEnvVariables, getLogger } from "@miqro/core";
 import { fork } from "cluster";
 import cluster from "cluster";
 import { resolve } from "path";
-import { existsSync } from "fs";
 
 const logger = getLogger("cluster.js");
 const count = parseInt(checkEnvVariables(["CLUSTER_COUNT"], ["1"])[0], 10);

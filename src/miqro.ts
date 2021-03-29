@@ -2,11 +2,6 @@ import { EventEmitter } from "events";
 import { resolve } from "path";
 import { runScript, Server } from "./loader";
 import { fork, ChildProcess } from "child_process";
-import { rejects } from "assert";
-import { existsSync } from "fs";
-import { ConfigFileNotFoundError } from "@miqro/core";
-
-const logger = console;
 
 export type ModeType = "cluster" | "simple";
 

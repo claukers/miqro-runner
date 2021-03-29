@@ -12,8 +12,8 @@
     "prepare": "npm run build",
     "prebuild": "rm -Rf dist;",
     "build": "tsc",
-    "test": "NODE_ENV=test nyc mocha test/*.test.ts",
-    "testfile": "NODE_ENVrm =test nyc mocha",
+    "test": "NODE_ENV=test mocha -r ts-node/register test/*.test.ts",
+    "testfile": "NODE_ENV=test mocha -r ts-node/register",
     "lint": "eslint ./src --ext ts",
     "fixlint": "eslint ./src --ext ts --fix"
   },
@@ -22,20 +22,19 @@
   "dependencies": {
     "@miqro/core": "^0.9.28",
     "@miqro/database": "^0.9.14",
-    "@miqro/handlers": "^1.0.34",
+    "@miqro/handlers": "^1.0.35",
     "@miqro/modelhandlers": "^1.0.8"
   },
   "devDependencies": {
     "@types/cookie": "^0.4.0",
     "@types/mocha": "^8.2.2",
-    "@types/node": "^14.14.35",
+    "@types/node": "^14.14.36",
     "@types/validator": "^13.1.3",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.22.0",
     "mocha": "^8.3.2",
     "morgan": "^1.10.0",
-    "nyc": "^15.1.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   },
