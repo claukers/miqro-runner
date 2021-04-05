@@ -1,6 +1,6 @@
 {
   "name": "@miqro/runner",
-  "version": "1.0.13",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,33 +8,24 @@
     "type": "git",
     "url": "https://github.com/claukers/miqro-runner.git"
   },
+  "bin": {
+    "@miqro/runner": "dist/cluster.js"
+  },
   "scripts": {
     "prepare": "npm run build",
     "prebuild": "rm -Rf dist;",
     "build": "tsc",
-    "test": "NODE_ENV=test mocha -r ts-node/register test/*.test.ts",
-    "testfile": "NODE_ENV=test mocha -r ts-node/register",
     "lint": "eslint ./src --ext ts",
     "fixlint": "eslint ./src --ext ts --fix"
   },
   "author": "claukers",
   "license": "ISC",
-  "dependencies": {
-    "@miqro/core": "^0.9.29",
-    "@miqro/database": "^0.9.14",
-    "@miqro/handlers": "^1.0.36",
-    "@miqro/modelhandlers": "^1.0.8"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/cookie": "^0.4.0",
-    "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.37",
-    "@types/validator": "^13.1.3",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
     "eslint": "^7.23.0",
-    "mocha": "^8.3.2",
-    "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   },
   "engines": {

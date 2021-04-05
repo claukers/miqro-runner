@@ -1,12 +1,15 @@
-import { checkEnvVariables, getLogger } from "@miqro/core";
+#!/usr/bin/env node
+
 import { fork } from "cluster";
 import cluster from "cluster";
 import { resolve } from "path";
 
-const logger = getLogger("cluster.js");
-const count = parseInt(checkEnvVariables(["CLUSTER_COUNT"], ["1"])[0], 10);
+const logger = console;
+const count = parseInt(process.env.CLUSTER_COUNT ? process.env.CLUSTER_COUNT : "1", 10);
+const disableRestart = process.env.DISABLE_RESTART ? process.env.DISABLE_RESTART : "false";
 if (process.argv.length < 3) {
-  throw new Error(`usage: CLUSTER_COUNT=1 node cluster.js <script> [...args]`);
+  logger.error(`usage: CLUSTER_COUNT=1 [DISABLE_RESTART=true|false] npx @miqro/runner <script> [...args]`);
+  process.exit(20);
 }
 const script = process.argv[2];
 const path = resolve(script);
@@ -26,13 +29,24 @@ const forkAutoRestart = (): void => {
       }
     });
   } catch (e) {
+    logger.error(e);
     process.exit(10);
   }
 }
 
 if (cluster.isMaster) {
   for (let i = 0; i < count; i++) {
-    forkAutoRestart();
+    if(disableRestart) {
+      try {
+        const instance = fork();
+        logger.info(`new fork ${instance.process.pid}`);
+      } catch(e) {
+        logger.error(e);
+        process.exit(10);
+      }
+    } else {
+      forkAutoRestart();
+    }
   }
 } else {
 
@@ -40,6 +54,7 @@ if (cluster.isMaster) {
   try {
     require(path);
   } catch (e) {
+    logger.error(e);
     process.exit(20);
   }
 }
