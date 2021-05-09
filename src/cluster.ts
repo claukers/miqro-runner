@@ -82,14 +82,22 @@ if (cluster.isMaster) {
   }
   // listen for broadcast and specifid send
   if (process.send) {
-    process.on("message", (message: { workerPID?: number; payload: Serializable }) => {
+    process.on("message", (message: { workerPID?: number; fromWorkerPID?: number; payload: Serializable }) => {
       const { workerPID, payload } = message;
       // console.log("receive " + require("util").inspect(message));
       if (workerPID === undefined) {
         const PIDS = Object.keys(instanceMap);
         for (const PID of PIDS) {
           try {
-            instanceMap[PID].send(payload)
+            if (message.fromWorkerPID !== undefined) {
+              if (PID !== String(message.fromWorkerPID)) {
+                instanceMap[PID].send(payload);
+              } else {
+                continue;
+              }
+            } else {
+              instanceMap[PID].send(payload);
+            }
           } catch (e) {
             if (process.send) {
               process.send({

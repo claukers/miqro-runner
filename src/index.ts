@@ -73,14 +73,15 @@ export class ClusterManager extends EventEmitter {
     }
   }
 
-  public broadcast(payload: Serializable): boolean {
-    return this.send(payload);
+  public broadcast(payload: Serializable, fromWorkerPID?: number): boolean {
+    return this.send(payload, undefined, fromWorkerPID);
   }
 
-  public send(payload: Serializable, workerPID?: number): boolean {
+  public send(payload: Serializable, toWorkerPID?: number, fromWorkerPID?: number): boolean {
     if (this.isPoolAlive() && this.pool) {
       return this.pool.send({
-        workerPID,
+        workerPID: toWorkerPID,
+        fromWorkerPID,
         payload
       });
     } else {
