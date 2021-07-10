@@ -133,3 +133,7 @@ export class ClusterManager extends EventEmitter {
     this.config = config;
   }
 }
+
+export const main = (): void => {
+  require("./cluster");
+}
